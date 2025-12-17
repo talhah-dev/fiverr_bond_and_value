@@ -75,7 +75,6 @@ export default function ProjectsFeatureSection({
                                     <TicketButton
                                         href={buttonHref}
                                         label={buttonLabel}
-                                        cutoutColor="#e6d7c4"
                                     />
                                 </div>
                             </div>
@@ -123,7 +122,6 @@ export default function ProjectsFeatureSection({
                     <TicketButton
                         href={buttonHref}
                         label={buttonLabel}
-                        cutoutColor="#e6d7c4"
                     />
                 </div>
             </div>
