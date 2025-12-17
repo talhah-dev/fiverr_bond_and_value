@@ -5,6 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import gsap from "gsap";
 import { ArrowRight, X, Instagram, Facebook, Linkedin } from "lucide-react";
+import DecryptedText from '@/components/DecryptedText'
+
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -122,16 +124,20 @@ export default function Header() {
 
             <nav className="navbar-items hidden items-center gap-10 lg:flex">
               <Link href="/" className="text_rg-button text-white/90 hover:text-white">
-                Home
+
+                <DecryptedText text="Home" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
               </Link>
               <Link href="/services" className="text_rg-button text-white/90 hover:text-white">
-                Services
+                <DecryptedText text="Services" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
+                
               </Link>
               <Link href="/blog" className="text_rg-button text-white/90 hover:text-white">
-                Blog
+                <DecryptedText text="Blog" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
+                
               </Link>
               <Link href="/contact" className="text_rg-button text-white/90 hover:text-white">
-                Contact
+                <DecryptedText text="Contact" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
+                
               </Link>
             </nav>
 
@@ -142,7 +148,8 @@ export default function Header() {
                 onClick={closeMenu}
               >
                 <div className="text_rg-button text-white/90 hover:text-white">
-                  Let's Bond
+                <DecryptedText text="Let's Bond" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
+                  
                 </div>
                 <ArrowRight className="h-4 w-4 text-white/90" />
               </Link>
@@ -154,7 +161,7 @@ export default function Header() {
                 aria-controls={navId}
                 onClick={toggleMenu}
               >
-                Menu
+               <DecryptedText text="menu" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
               </button>
             </div>
           </div>
@@ -263,7 +270,7 @@ export default function Header() {
                     onClick={closeMenu}
                     className="absolute right-0 top-0 inline-flex cursor-pointer items-center gap-2 text-white/90 hover:text-white"
                   >
-                    <span className="text_rg-button">Close</span>
+                     <DecryptedText text="close" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
                   </button>
                 </div>
 
