@@ -13,6 +13,7 @@ import BlogSection from '@/components/BlogSection';
 import Footer from '@/components/Footer';
 import ExpandingHero from '@/components/ExpandingHero';
 import ServicesSection from '@/components/ServicesSection';
+import TabLoader from '@/components/Loader';
 
 type CardItem =
   | { id: string; type: "logo"; title: string }
@@ -72,7 +73,12 @@ export default function HomePage() {
   };
   return (
     <div className='bg-[#e6d7c4] min-h-screen'>
+
       {/* <Loader/> */}
+
+      <TabLoader direction="top" speed={1.4} />
+
+
       <div className="relative">
         <video
           className="absolute md:inline hidden inset-0 h-full w-full object-cover"
@@ -107,7 +113,7 @@ export default function HomePage() {
                   <SplitText
                     text="Pay On Success Communication that connects."
                     className="text-[40px] sm:text-[70px] md:text-8xl text-center"
-                    delay={150}
+                    delay={300}
                     duration={2}
                     splitType="lines"
                     from={{ opacity: 0, y: 100 }}
@@ -185,23 +191,24 @@ export default function HomePage() {
             from={{ opacity: 0, y: 100 }}
             onLetterAnimationComplete={handleAnimationComplete}
           />
-        
-      </h2>
 
-      <p className="mt-6 max-w-3xl text-[#23352d]/80 tracking-wide uppercase mb-8">
-        Our work and insights are featured across top global publications. Our set of experiences is based on trust, transparency and a commitment to greatness
-      </p>
+        </h2>
 
-      <ShufflingCardsGrid
-        items={items}
-        intervalMs={3500}     // wait longer between shuffles
-        movesPerTick={4}      // only a couple cards move
-        animDuration={2}    // slow + smooth motion
-      />
+        <p data-aos="fade-up"
+          className="mt-6 max-w-3xl text-[#23352d]/80 tracking-wide uppercase mb-8">
+          Our work and insights are featured across top global publications. Our set of experiences is based on trust, transparency and a commitment to greatness
+        </p>
 
-    </section>
+        <ShufflingCardsGrid
+          items={items}
+          intervalMs={3500}     // wait longer between shuffles
+          movesPerTick={4}      // only a couple cards move
+          animDuration={2}    // slow + smooth motion
+        />
 
-      {/* <ScrollTabsSection tabs={tabs} className="mt-0" /> */ }
+      </section>
+
+      {/* <ScrollTabsSection tabs={tabs} className="mt-0" /> */}
 
 
       <ProjectsFeatureSection
@@ -303,12 +310,12 @@ export default function HomePage() {
 
       <Footer
         instaItems={[
-          { src: "/img.webp", label: "Japandi Toilet" },
-          { src: "/img.webp", label: "Woonkamer" },
-          { src: "/img.webp", label: "Badkamer" },
-          { src: "/img.webp", label: "Keuken" },
-          { src: "/img.webp", label: "Slaapkamer" },
-          { src: "/img.webp", label: "Entree" },
+          { src: "/img3.png", label: "Japandi Toilet" },
+          { src: "/img4.png", label: "Woonkamer" },
+          { src: "/img5.jpg", label: "Badkamer" },
+          { src: "/img6.jpg", label: "Keuken" },
+          { src: "/img7.jpg", label: "Slaapkamer" },
+          { src: "/img8.jpg", label: "Entree" },
         ]}
       />
     </div >

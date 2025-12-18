@@ -67,7 +67,7 @@ export default function ProjectsFeatureSection({
                                 <h2 className="">
                                     <SplitText
                                         text={title}
-                                        className="font-[PPPangaia] uppercase leading-[1] md:leading-[1.2] tracking-wide text-[#23352d] text-[clamp(2rem,4.2vw,2.7rem)]"
+                                        className="font-[PPPangaia] !text-start uppercase leading-[1] md:leading-[1.2] tracking-wide text-[#23352d] text-[clamp(2rem,4.2vw,2.7rem)]"
                                         delay={150}
                                         duration={2}
                                         splitType="lines"
@@ -78,7 +78,8 @@ export default function ProjectsFeatureSection({
                             </div>
 
                             {/* paragraph + button */}
-                            <div className="pl-2">
+                            <div className="pl-2" data-aos="fade-up"
+>
                                 <p className="text-[#23352d]/80 text-sm">
                                     {body}
                                 </p>

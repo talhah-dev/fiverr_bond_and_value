@@ -55,7 +55,8 @@ export default function ServicesSection({
                         />
                     </h2>
 
-                    <div className="mt-6 max-w-xl text-[#23352d]/65 text-sm uppercase tracking-widest leading-6">
+                    <div data-aos="fade-up"
+                        className="mt-6 max-w-xl  text-[#23352d]/65 text-sm uppercase tracking-widest leading-6">
                         <div>{sub1}</div>
                         <div>{sub2}</div>
                     </div>
@@ -66,6 +67,7 @@ export default function ServicesSection({
                     {services.map((s) => (
                         <ServiceCard
                             key={s.title}
+                            
                             href={s.href || "/services"}
                             title={s.title}
                             tag={s.tag || "Service"}

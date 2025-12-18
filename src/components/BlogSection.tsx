@@ -34,7 +34,7 @@ export default function BlogSection({
         <section className="bg-[#e6d7c4] text-[#485044]">
             <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-14 py-12 lg:py-16">
                 {/* Title */}
-                <h2 className="">
+                <h2 className="" >
                     <SplitText
                         text={title}
                         className="font-[PPPangaia] uppercase tracking-wide  leading-[0.9] text-[clamp(2rem,6vw,3.5rem)]"
@@ -53,7 +53,8 @@ export default function BlogSection({
                 <div className="mt-10 grid grid-cols-1 lg:grid-cols-[0.9fr_1.6fr] gap-10 lg:gap-16">
                     {/* Left intro */}
                     <div className="flex md:pt-7">
-                        <p className="max-w-md text-[#485044]/70 ">
+                        <p data-aos="fade-up"
+                            className="max-w-md text-[#485044]/70 ">
                             {intro}
                         </p>
                     </div>
@@ -65,6 +66,7 @@ export default function BlogSection({
                                 <Link
                                     key={item.href + item.title}
                                     href={item.href}
+                                    data-aos="fade-up"
                                     className="group grid grid-cols-1 md:items-end md:grid-cols-[1.1fr_1.5fr] gap-3 md:gap-8 py-7"
                                 >
                                     <div>

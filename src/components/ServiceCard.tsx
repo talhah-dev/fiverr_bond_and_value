@@ -51,10 +51,11 @@ export default function ServiceCard({
             onMouseLeave={onLeave}
             onFocus={onEnter}
             onBlur={onLeave}
+            data-aos="fade-up"
             className="group block border border-black/25 bg-transparent"
         >
             {/* Media */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden">
+            <div className="relative aspect-[4/3] w-full overflow-hidden" >
                 <Image
                     fill
                     src={imageSrc}
