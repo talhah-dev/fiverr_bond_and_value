@@ -3,6 +3,7 @@
 import Image from "next/image";
 import TicketButton from "@/components/TicketButton";
 import { ParallaxImage } from "./ParallaxImage";
+import SplitText from "./SplitText";
 
 type ProjectsFeatureProps = {
     leftImage: string;
@@ -23,6 +24,10 @@ export default function ProjectsFeatureSection({
     buttonHref,
     buttonLabel,
 }: ProjectsFeatureProps) {
+
+    const handleAnimationComplete = () => {
+        console.log('All letters have animated!');
+    };
     return (
         <section className="bg-[#e6d7c4] text-[#23352d]">
             <div className="mx-auto w-full max-w-[1450px] px-4 sm:px-6 lg:px-14 py-10 sm:py-14 lg:py-20">
@@ -59,8 +64,16 @@ export default function ProjectsFeatureSection({
                                     {eyebrow}
                                 </div>
 
-                                <h2 className="font-[PPPangaia] uppercase leading-[1] tracking-wide text-[#23352d] text-[clamp(2rem,4.2vw,2.7rem)]">
-                                    {title}
+                                <h2 className="">
+                                    <SplitText
+                                        text={title}
+                                        className="font-[PPPangaia] uppercase leading-[1] md:leading-[1.2] tracking-wide text-[#23352d] text-[clamp(2rem,4.2vw,2.7rem)]"
+                                        delay={150}
+                                        duration={2}
+                                        splitType="lines"
+                                        from={{ opacity: 0, y: 100 }}
+                                        onLetterAnimationComplete={handleAnimationComplete}
+                                    />
                                 </h2>
                             </div>
 

@@ -7,6 +7,7 @@ import TicketButton from "@/components/TicketButton";
 
 import { motion } from "framer-motion";
 import { ParallaxImage } from "./ParallaxImage";
+import SplitText from "./SplitText";
 
 type InstaItem = {
     src: string;
@@ -18,15 +19,27 @@ export default function Footer({
 }: {
     instaItems: InstaItem[];
 }) {
+    const handleAnimationComplete = () => {
+        console.log('All letters have animated!');
+    };
     return (
         <footer className="relative bg-[#fef2e1] text-[#4a5246] overflow-hidden">
             <div className="mx-auto max-w-[1450px] px-4 md:px-6 lg:px-14 pt-20 pb-10 md:pb-44">
                 {/* TOP CONTACT SECTION */}
                 <div className="grid grid-cols-1  lg:grid-cols-2 md:gap-14 gap-8">
-                    <h2 className="font-[PPPangaia]   leading-tight text-[clamp(2rem,5.5vw,3rem)] max-w-xl">
-                        PLAN EEN KENNISMAKING
+                    <h2 className="">
+                        <SplitText
+                            text="PLAN EEN KENNISMAKING
                         VOOR JE EIGEN
-                        INTERIEUR
+                        INTERIEUR"
+                            className="font-[PPPangaia] uppercase  leading-tight text-[clamp(2rem,5.5vw,3rem)] max-w-xl"
+                            delay={150}
+                            duration={2}
+                            splitType="lines"
+                            from={{ opacity: 0, y: 100 }}
+                            onLetterAnimationComplete={handleAnimationComplete}
+                        />
+                        
                     </h2>
 
                     <form className="space-y-2">
@@ -119,7 +132,7 @@ export default function Footer({
 
                                 <Image
                                     width={500}
-                                    height={500} 
+                                    height={500}
                                     src={item.src}
                                     alt={item.label}
                                     className="object-cover md:hidden"

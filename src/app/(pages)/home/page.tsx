@@ -11,6 +11,8 @@ import ScrollTabsSection from '@/components/ScrollTabsSection';
 import ProjectsFeatureSection from '@/components/ProjectsFeatureSection';
 import BlogSection from '@/components/BlogSection';
 import Footer from '@/components/Footer';
+import ExpandingHero from '@/components/ExpandingHero';
+import ServicesSection from '@/components/ServicesSection';
 
 type CardItem =
   | { id: string; type: "logo"; title: string }
@@ -73,8 +75,17 @@ export default function HomePage() {
       {/* <Loader/> */}
       <div className="relative">
         <video
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute md:inline hidden inset-0 h-full w-full object-cover"
           src="https://res.cloudinary.com/dixhnqcby/video/upload/v1765973067/videobg_d0ta23.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        />
+        <video
+          className="absolute md:hidden inset-0 h-full w-full object-cover"
+          src="https://res.cloudinary.com/dixhnqcby/video/upload/v1766065204/Trailer_Mobile_Version_11-04_lkjlc4.mp4"
           autoPlay
           muted
           loop
@@ -129,9 +140,18 @@ export default function HomePage() {
         }
       >
         <div className="text-[#586053]">
-          <div className=" font-semibold md:text-4xl font-[PPPangaia] uppercase text-xl mb-6">
-            Strategic Communications
-            for Exceptional Brand Growth
+          <div className=" ">
+
+            <SplitText
+              text="Strategic Communications
+            for Exceptional Brand Growth"
+              className="font-medium md:text-4xl font-[PPPangaia] uppercase text-xl mb-6"
+              delay={150}
+              duration={2}
+              splitType="lines"
+              from={{ opacity: 0, y: 100 }}
+              onLetterAnimationComplete={handleAnimationComplete}
+            />
           </div>
           <p className="text-lg">
 
@@ -155,29 +175,38 @@ export default function HomePage() {
 
 
       <section className="bg-[#e6d7c4] px-6 lg:px-14 py-16">
-        <h2 className=" text-[#23352d] md:text-6xl text-3xl max-w-3xl font-[PPPangaia] ">
-          WE&apos;RE PROUD TO BE RECOGNIZED AS INDUSTRY LEADERS.
-        </h2>
+        <h2 className=" ">
+          <SplitText
+            text="WE&apos;RE PROUD TO BE RECOGNIZED AS INDUSTRY LEADERS."
+            className="text-[#23352d] md:text-6xl text-3xl uppercase !text-start max-w-3xl font-[PPPangaia] "
+            delay={150}
+            duration={2}
+            splitType="lines"
+            from={{ opacity: 0, y: 100 }}
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
+        
+      </h2>
 
-        <p className="mt-6 max-w-3xl text-[#23352d]/80 tracking-wide uppercase mb-8">
-          Our work and insights are featured across top global publications. Our set of experiences is based on trust, transparency and a commitment to greatness
-        </p>
+      <p className="mt-6 max-w-3xl text-[#23352d]/80 tracking-wide uppercase mb-8">
+        Our work and insights are featured across top global publications. Our set of experiences is based on trust, transparency and a commitment to greatness
+      </p>
 
-        <ShufflingCardsGrid
-          items={items}
-          intervalMs={3500}     // wait longer between shuffles
-          movesPerTick={4}      // only a couple cards move
-          animDuration={2}    // slow + smooth motion
-        />
+      <ShufflingCardsGrid
+        items={items}
+        intervalMs={3500}     // wait longer between shuffles
+        movesPerTick={4}      // only a couple cards move
+        animDuration={2}    // slow + smooth motion
+      />
 
-      </section>
+    </section>
 
-      {/* <ScrollTabsSection tabs={tabs} className="mt-0" /> */}
+      {/* <ScrollTabsSection tabs={tabs} className="mt-0" /> */ }
 
 
       <ProjectsFeatureSection
         leftImage="/img.webp"
-        rightTopImage="/img.webp"
+        rightTopImage="/img3.png"
         title={"Strategic PR & Marketing for Unmatched Brand Growth"}
         body="Een interieurontwerp komt pas echt tot leven wanneer ideeën worden omgezet in een echte ruimte. In mijn projecten zie je hoe creativiteit en aandacht voor detail samenkomen om unieke interieurs te creëren die perfect passen bij de wensen van mijn klanten. Elk project heeft zijn eigen verhaal, van gezellige woonruimtes tot praktische werkplekken. Met oog voor kleur en materiaal zorg ik ervoor dat alles mooi in balans is en goed functioneert. Laat je inspireren door eerdere ontwerpen en ontdek wat er mogelijk is voor jouw interieur!
 
@@ -185,6 +214,64 @@ export default function HomePage() {
         buttonHref="/projecten"
         buttonLabel="Projecten"
       />
+
+
+
+
+
+
+      <ServicesSection
+        services={[
+          {
+            title: "Public Relations",
+            imageSrc: "/services/PublicRelations.png",
+            videoSrc: "/services/PublicRelations.mp4",
+            tag: "Service",
+            description: "Media outreach & brand positioning.",
+          },
+          {
+            title: "Brand Consultancy",
+            imageSrc: "/services/BrandConsultancy.png",
+            videoSrc: "/services/BrandConsultancy.mp4",
+            tag: "Service",
+            description: "Identity, strategy & messaging.",
+          },
+          {
+            title: "Reputation Management",
+            imageSrc: "/services/ReputationManagement.png",
+            videoSrc: "/services/ReputationManagement.mp4",
+            tag: "Service",
+            description: "Protect and strengthen trust.",
+          },
+          {
+            title: "Website Development",
+            imageSrc: "/services/WebsiteDevelopment.png",
+            videoSrc: "/services/WebsiteDevelopment.mp4",
+            tag: "Service",
+            description: "Modern, fast conversion websites.",
+          },
+          {
+            title: "Digital Marketing",
+            imageSrc: "/services/DigitalMarketing.png",
+            videoSrc: "/services/DigitalMarketing.mp4",
+            tag: "Service",
+            description: "Performance + creative campaigns.",
+          },
+          {
+            title: "Investor Relations",
+            imageSrc: "/services/InvestorRelations.png",
+            videoSrc: "/services/InvestorRelations.mp4",
+            tag: "Service",
+            description: "Clear communication for investors.",
+          },
+        ]}
+      />
+
+
+      <ExpandingHero imageSrc="/img2.jpg" quote='"EEN INTERIEUR
+        MET EENHEID
+        EN RUST"
+        ' />
 
 
       <BlogSection intro="Ontdek de laatste trends, tips en inspiratie op het gebied van interieurontwerp en styling. Blijf op de hoogte van onze nieuwste projecten en inzichten."
@@ -213,6 +300,7 @@ export default function HomePage() {
         ]}
       />
 
+
       <Footer
         instaItems={[
           { src: "/img.webp", label: "Japandi Toilet" },
@@ -223,6 +311,6 @@ export default function HomePage() {
           { src: "/img.webp", label: "Entree" },
         ]}
       />
-    </div>
+    </div >
   )
 }

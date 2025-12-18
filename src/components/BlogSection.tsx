@@ -3,6 +3,7 @@
 import Link from "next/link";
 import TicketButton from "@/components/TicketButton";
 import DecryptedText from "./DecryptedText";
+import SplitText from "./SplitText";
 
 type BlogItem = {
     href: string;
@@ -24,12 +25,25 @@ export default function BlogSection({
     buttonHref?: string;
     buttonLabel?: string;
 }) {
+
+    const handleAnimationComplete = () => {
+        console.log('All letters have animated!');
+    };
+
     return (
         <section className="bg-[#e6d7c4] text-[#485044]">
             <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-14 py-12 lg:py-16">
                 {/* Title */}
-                <h2 className="font-serif tracking-wide  leading-[0.9] text-[clamp(2rem,6vw,3.5rem)]">
-                    {title}
+                <h2 className="">
+                    <SplitText
+                        text={title}
+                        className="font-[PPPangaia] uppercase tracking-wide  leading-[0.9] text-[clamp(2rem,6vw,3.5rem)]"
+                        delay={150}
+                        duration={2}
+                        splitType="lines"
+                        from={{ opacity: 0, y: 100 }}
+                        onLetterAnimationComplete={handleAnimationComplete}
+                    />
                 </h2>
 
                 {/* Divider */}
