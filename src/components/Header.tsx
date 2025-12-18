@@ -224,7 +224,7 @@ export default function Header() {
                       {/* TEXT (moves right on hover) */}
                       <div
                         className="
-        font-serif leading-[0.95] text-[#23352d]
+        font-[PPPangaia] uppercase leading-[0.95] text-[#23352d]
         text-[clamp(2.2rem,6vw,3.5rem)]
         transition-transform duration-300 ease-out
         group-hover:translate-x-[clamp(2.25rem,4vw,3.25rem)]

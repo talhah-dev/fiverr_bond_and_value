@@ -132,6 +132,25 @@
   --font-heading: var(--font-inter);
 }
 
+@font-face {
+  font-family: "InterCustom";
+  src: url("https://cdn.prod.website-files.com/6798cba3ff70cd53ac01b30a/680217ce8a546c7b785f19e3_Inter_24pt-Regular.woff")
+      format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
-  font-family: var(--font-heading), Arial, sans-serif;
+  font-family: "InterCustom", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji",
+    sans-serif;
+}
+
+@font-face {
+  font-family: "PPPangaia";
+  src: url("https://cdn.prod.website-files.com/6798cba3ff70cd53ac01b30a/67a358678501f07850f643e0_PPPangaia-Ultralight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
 }

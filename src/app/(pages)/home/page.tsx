@@ -10,6 +10,7 @@ import ShufflingCardsGrid from '@/components/ShufflingCardsGrid';
 import ScrollTabsSection from '@/components/ScrollTabsSection';
 import ProjectsFeatureSection from '@/components/ProjectsFeatureSection';
 import BlogSection from '@/components/BlogSection';
+import Footer from '@/components/Footer';
 
 type CardItem =
   | { id: string; type: "logo"; title: string }
@@ -90,11 +91,11 @@ export default function HomePage() {
           <div className="relative z-[2] flex md:h-full w-full  flex-col ">
             {/* Center Title */}
             <div className="flex flex-1 items-start justify-center px-4 pb-20 md:pb-0 md:pt-32">
-              <h1 className="text-center font-serif leading-[0.95] tracking-wide text-[#e6d7c4] drop-shadow-[0_2px_20px_rgba(0,0,0,0.35)]">
-                <span className="block text-[48px] sm:text-[70px] md:text-8xl max-w-4xl mx-auto text-center">
+              <h1 className="text-center font-[PPPangaia] uppercase leading-[0.95] tracking-wide text-[#e6d7c4] drop-shadow-[0_2px_20px_rgba(0,0,0,0.35)]">
+                <span className="block max-w-4xl leading-tight mx-auto text-center">
                   <SplitText
                     text="Pay On Success Communication that connects."
-                    className="text-[48px] sm:text-[70px] md:text-8xl text-center"
+                    className="text-[40px] sm:text-[70px] md:text-8xl text-center"
                     delay={150}
                     duration={2}
                     splitType="lines"
@@ -128,7 +129,7 @@ export default function HomePage() {
         }
       >
         <div className="text-[#586053]">
-          <div className=" font-semibold md:text-4xl text-xl mb-6">
+          <div className=" font-semibold md:text-4xl font-[PPPangaia] uppercase text-xl mb-6">
             Strategic Communications
             for Exceptional Brand Growth
           </div>
@@ -154,12 +155,12 @@ export default function HomePage() {
 
 
       <section className="bg-[#e6d7c4] px-6 lg:px-14 py-16">
-        <h2 className="font-serif text-[#23352d] text-[clamp(40px,6vw,84px)] leading-[0.9]">
-          WE&apos;RE PROUD TO BE<br />RECOGNIZED AS INDUSTRY<br />LEADERS.
+        <h2 className=" text-[#23352d] md:text-6xl text-3xl max-w-3xl font-[PPPangaia] ">
+          WE&apos;RE PROUD TO BE RECOGNIZED AS INDUSTRY LEADERS.
         </h2>
 
-        <p className="mt-6 max-w-3xl text-[#23352d]/80 tracking-wide uppercase text-sm">
-          OUR WORK AND INSIGHTS ARE FEATURED ACROSS TOP GLOBAL PUBLICATIONS...
+        <p className="mt-6 max-w-3xl text-[#23352d]/80 tracking-wide uppercase mb-8">
+          Our work and insights are featured across top global publications. Our set of experiences is based on trust, transparency and a commitment to greatness
         </p>
 
         <ShufflingCardsGrid
@@ -177,8 +178,10 @@ export default function HomePage() {
       <ProjectsFeatureSection
         leftImage="/img.webp"
         rightTopImage="/img.webp"
-        title={"PROJECTEN\nGEMAAKT\nMET PURE\nPASSIE"}
-        body="Een interieurontwerp komt pas echt tot leven wanneer ideeën worden omgezet..."
+        title={"Strategic PR & Marketing for Unmatched Brand Growth"}
+        body="Een interieurontwerp komt pas echt tot leven wanneer ideeën worden omgezet in een echte ruimte. In mijn projecten zie je hoe creativiteit en aandacht voor detail samenkomen om unieke interieurs te creëren die perfect passen bij de wensen van mijn klanten. Elk project heeft zijn eigen verhaal, van gezellige woonruimtes tot praktische werkplekken. Met oog voor kleur en materiaal zorg ik ervoor dat alles mooi in balans is en goed functioneert. Laat je inspireren door eerdere ontwerpen en ontdek wat er mogelijk is voor jouw interieur!
+
+"
         buttonHref="/projecten"
         buttonLabel="Projecten"
       />
@@ -191,27 +194,35 @@ export default function HomePage() {
             category: "Interieurdesign",
             title: "De Kracht van Kleur in Interieur",
             excerpt:
-              "Leer hoe kleur de sfeer en functionaliteit van elke ruimte kan transformeren. Ontdek de psychologie achter verschillende kleurenpaletten en hoe je deze effectief toepast in jouw huis.",
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit.  ",
           },
           {
             href: "/blog/minimalistisch-wonen",
             category: "Styling",
             title: "Minimalistisch Wonen: Minder is Meer",
             excerpt:
-              "Duik in de wereld van minimalistisch wonen en ontdek hoe je met minder spullen meer rust en ruimte creëert. Praktische tips voor een opgeruimd en stijlvol interieur.",
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
           },
           {
             href: "/blog/duurzaam-design",
             category: "Duurzaamheid",
             title: "Duurzaam Design: Mooi en Milieubewust",
             excerpt:
-              "Verken de mogelijkheden van duurzaam interieurdesign. Van gerecyclede materialen tot energiezuinige oplossingen, maak bewuste keuzes voor een groenere leefomgeving.",
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
           },
         ]}
       />
 
-      <div className="h-screen bg-red-50"></div>
-
+      <Footer
+        instaItems={[
+          { src: "/img.webp", label: "Japandi Toilet" },
+          { src: "/img.webp", label: "Woonkamer" },
+          { src: "/img.webp", label: "Badkamer" },
+          { src: "/img.webp", label: "Keuken" },
+          { src: "/img.webp", label: "Slaapkamer" },
+          { src: "/img.webp", label: "Entree" },
+        ]}
+      />
     </div>
   )
 }

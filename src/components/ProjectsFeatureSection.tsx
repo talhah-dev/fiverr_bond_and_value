@@ -25,9 +25,8 @@ export default function ProjectsFeatureSection({
 }: ProjectsFeatureProps) {
     return (
         <section className="bg-[#e6d7c4] text-[#23352d]">
-            <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-14 py-10 sm:py-14 lg:py-20">
-                {/* Desktop layout */}
-                <div className="hidden lg:grid grid-cols-[1.15fr_0.85fr] gap-12 items-stretch">
+            <div className="mx-auto w-full max-w-[1450px] px-4 sm:px-6 lg:px-14 py-10 sm:py-14 lg:py-20">
+                <div className="hidden lg:grid grid-cols-[0.85fr_1.15fr] gap-12 items-stretch">
                     {/* LEFT BIG IMAGE */}
                     <div className="relative overflow-hidden">
                         <div className="relative aspect-[4/3] w-full ">
@@ -44,7 +43,7 @@ export default function ProjectsFeatureSection({
                         {/* top small image */}
                         <div className="flex justify-end">
                             <div className="relative  w-[min(420px,32vw)] aspect-[16/9] overflow-hidden">
-                                <ParallaxImage 
+                                <ParallaxImage
                                     src={rightTopImage}
                                     alt="Project preview"
                                     className="object-cover"
@@ -56,18 +55,18 @@ export default function ProjectsFeatureSection({
                         <div className="mt-10 flex-1 grid grid-cols-[1fr_1fr] gap-10 items-center">
                             {/* big title (center-ish) */}
                             <div className="pr-4">
-                                <div className="mb-6 text-center font-serif tracking-widest text-[#23352d]/70">
+                                <div className="mb-6  font-serif tracking-widest text-[#23352d]/70">
                                     {eyebrow}
                                 </div>
 
-                                <h2 className="font-serif leading-[0.92] tracking-wide text-[#23352d] text-[clamp(44px,4.2vw,82px)]">
+                                <h2 className="font-[PPPangaia] uppercase leading-[1] tracking-wide text-[#23352d] text-[clamp(2rem,4.2vw,2.7rem)]">
                                     {title}
                                 </h2>
                             </div>
 
                             {/* paragraph + button */}
                             <div className="pl-2">
-                                <p className="text-[#23352d]/80 text-[clamp(14px,1vw,16px)] leading-7">
+                                <p className="text-[#23352d]/80 text-sm">
                                     {body}
                                 </p>
 
@@ -111,13 +110,16 @@ export default function ProjectsFeatureSection({
                         </div>
                     </div>
 
-                    <h2 className="font-serif leading-[0.92] tracking-wide text-[#23352d] text-[clamp(34px,9vw,54px)]">
-                        {title}
-                    </h2>
+                    <div className="">
 
-                    <p className="text-[#23352d]/80 text-[15px] leading-7">
-                        {body}
-                    </p>
+                        <h2 className="font-[PPPangaia] mb-4 uppercase leading-[1.2] tracking-wide text-[#23352d] text-[clamp(34px,9vw,54px)]">
+                            {title}
+                        </h2>
+
+                        <p className="text-[#23352d] text-[15px]">
+                            {body}
+                        </p>
+                    </div>
 
                     <TicketButton
                         href={buttonHref}
