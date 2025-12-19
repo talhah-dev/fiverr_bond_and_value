@@ -7,7 +7,7 @@ import React from "react";
 export default function PrivacyPolicy() {
     return (
         <Wrapper>
-            <section className="bg-[#eadcc9] text-[#23352d]">
+            <section className="bg-[#eadcc9] text-[#0e221c]">
             <Header />
                 <div className="mx-auto max-w-[1100px] px-4 md:px-10 py-16 md:py-24">
                     {/* Heading */}
@@ -16,13 +16,13 @@ export default function PrivacyPolicy() {
                             Privacy Policy
                         </h1>
 
-                        <p className="mt-6 text-sm uppercase tracking-widest text-[#23352d]/60">
+                        <p className="mt-6 text-sm uppercase tracking-widest text-[#0e221c]/60">
                             Last updated: July 2025
                         </p>
                     </div>
 
                     {/* Content */}
-                    <div className="mt-16 space-y-14 text-[15px] leading-7 text-[#23352d]/80">
+                    <div className="mt-16 space-y-14 text-[15px] leading-7 text-[#0e221c]/80">
                         <section>
                             <h2 className="font-[PPPangaia] uppercase font-semibold tracking-wider text-2xl mb-4">1. Introduction</h2>
                             <p>

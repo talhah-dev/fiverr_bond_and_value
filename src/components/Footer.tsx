@@ -69,7 +69,7 @@ export default function Footer() {
     const handleAnimationComplete = () => {
     };
     return (
-        <footer className="relative bg-[#fef2e1] text-[#4a5246] overflow-hidden">
+        <footer className="relative bg-[#fef2e1] text-[#0e221c] overflow-hidden">
             <div className="mx-auto max-w-[1450px] px-4 md:px-6 lg:px-14 pt-20 pb-10 md:pb-44">
                 <div className="grid grid-cols-1  lg:grid-cols-2 md:gap-14 gap-8">
                     <h2 className="">
@@ -88,7 +88,7 @@ export default function Footer() {
                     <div className="space-y-2">
                         <div className="grid grid-cols-2 md:gap-4 gap-2">
                             <div className="space-y-2">
-                                <label htmlFor="email" className="text-sm text-[#4a5246]/90">
+                                <label htmlFor="email" className="text-sm text-[#0e221c]/90">
                                     Email Address
                                 </label>
                                 <input
@@ -103,7 +103,7 @@ export default function Footer() {
                             </div>
 
                             <div className="space-y-2">
-                                <label htmlFor="phone" className="text-sm text-[#4a5246]/90">
+                                <label htmlFor="phone" className="text-sm text-[#0e221c]/90">
                                     Phone
                                 </label>
                                 <input
@@ -119,7 +119,7 @@ export default function Footer() {
                         </div>
 
                         <div className="space-y-2">
-                            <label htmlFor="message" className="text-sm text-[#4a5246]/90">
+                            <label htmlFor="message" className="text-sm text-[#0e221c]/90">
                                 Message
                             </label>
                             <textarea
@@ -133,7 +133,7 @@ export default function Footer() {
                             />
                         </div>
 
-                        <p className="text-sm text-[#4a5246]/90 mb-5">
+                        <p className="text-sm text-[#0e221c]/90 mb-5">
                             By clicking Let's Bond, you agree to our Terms and Conditions and Privacy
                             Policy
                         </p>
@@ -171,7 +171,7 @@ export default function Footer() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     aria-label={label}
-                                    className="md:h-11 h-10 w-10 md:w-11 flex items-center justify-center rounded-full border border-black/30 text-[#4a5246]/70 hover:text-[#4a5246]"
+                                    className="md:h-11 h-10 w-10 md:w-11 flex items-center justify-center rounded-full border border-black/30 text-[#0e221c]/70 hover:text-[#0e221c]"
                                 >
                                     <Icon size={18} />
                                 </Link>
@@ -213,11 +213,11 @@ export default function Footer() {
 
                     <div className="flex md:justify-center justify-between gap-6">
                         <Link href="/terms-and-conditions" className="underline">
-                            <DecryptedText text="Terms and Conditions" className="text-[#485045] underline " useOriginalCharsOnly animateOn="hover" parentClassName="text-[#485045] cursor-pointer underline    " speed={50} />
+                            <DecryptedText text="Terms and Conditions" className="text-[#0e221c] underline " useOriginalCharsOnly animateOn="hover" parentClassName="text-[#0e221c] cursor-pointer underline    " speed={50} />
                         </Link>
                         <Link href="/privacy-policy" className="underline">
-                            <DecryptedText text="Privacy Policy" className="text-[#485045] underline " useOriginalCharsOnly
-                                animateOn="hover" parentClassName="text-[#485045] cursor-pointer underline  " speed={50} />
+                            <DecryptedText text="Privacy Policy" className="text-[#0e221c] underline " useOriginalCharsOnly
+                                animateOn="hover" parentClassName="text-[#0e221c] cursor-pointer underline  " speed={50} />
                         </Link>
                     </div>
 
@@ -235,7 +235,7 @@ export default function Footer() {
 }
 
 
-function HalfCutBrandText({ text = "Bond & Value" }: { text?: string }) {
+function HalfCutBrandText({ text = "Bond & Vale" }: { text?: string }) {
     return (
         <div className="pointer-events-none md:block hidden absolute bottom-0 left-0 w-full">
             {/* this is the “window” that only shows half */}
@@ -249,12 +249,12 @@ function HalfCutBrandText({ text = "Bond & Value" }: { text?: string }) {
               font-serif
               leading-none
               tracking-tight
-              text-[#485045]
-              sm:text-[15vw]
+              text-[#0e221c]
+              sm:text-[17vw]
               text-[16vw]
             "
                     >
-                        {text}
+                       Bond & Vale    
                     </span>
                 </div>
             </div>

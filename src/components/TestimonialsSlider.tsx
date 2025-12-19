@@ -58,7 +58,7 @@ export default function TestimonialsSlider({
     };
 
     return (
-        <section className={["bg-[#e6d7c4] text-[#23352d]", className].join(" ")}>
+        <section className={["bg-[#e6d7c4] text-[#0e221c]", className].join(" ")}>
             <div className="mx-auto max-w-[1450px]  lg:px-14 py-14 lg:py-24">
                 <div className="flex items-center px-4 justify-center gap-4">
                     <span className="h-[1px] w-10 bg-black/20" />
@@ -80,7 +80,7 @@ export default function TestimonialsSlider({
                             onLetterAnimationComplete={handleAnimationComplete}
                         />
                     </h2>
-                    <p data-aos="fade-up" className="mx-auto  mt-6 max-w-2xl text-[clamp(0.9rem,1.2vw,1rem)] text-[#23352d]/70 leading-7 whitespace-pre-line">
+                    <p data-aos="fade-up" className="mx-auto  mt-6 max-w-2xl text-[clamp(0.9rem,1.2vw,1rem)] text-[#0e221c]/70 leading-7 whitespace-pre-line">
                         {subtitle}
                     </p>
                 </div>
@@ -125,7 +125,7 @@ export default function TestimonialsSlider({
                             type="button"
                             aria-label="Previous"
                             onClick={() => swiperRef.current?.slidePrev()}
-                            className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/25 bg-transparent text-[#23352d] transition hover:bg-black/5"
+                            className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/25 bg-transparent text-[#0e221c] transition hover:bg-black/5"
                         >
                             <span className="text-xl transition group-hover:-translate-x-[1px]">←</span>
                         </button>
@@ -134,7 +134,7 @@ export default function TestimonialsSlider({
                             type="button"
                             aria-label="Next"
                             onClick={() => swiperRef.current?.slideNext()}
-                            className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/25 bg-[#23352d] text-[#e6d7c4] transition hover:bg-[#1b2a24]"
+                            className="group inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/25 bg-[#0e221c] text-[#e6d7c4] transition hover:bg-[#1b2a24]"
                         >
                             <span className="text-xl transition group-hover:translate-x-[1px]">→</span>
                         </button>
@@ -148,7 +148,7 @@ export default function TestimonialsSlider({
                                 onClick={() => swiperRef.current?.slideToLoop(i)}
                                 className={[
                                     "h-2 w-2 rounded-full transition",
-                                    i === active ? "bg-[#23352d]" : "bg-black/20 hover:bg-black/30",
+                                    i === active ? "bg-[#0e221c]" : "bg-black/20 hover:bg-black/30",
                                 ].join(" ")}
                                 aria-label={`Go to testimonial ${i + 1}`}
                             />

@@ -20,7 +20,7 @@ export default function TicketButton({ href, label, className }: Props) {
                     href={href}
                     className={[
                         "group inline-flex items-center justify-between gap-10",
-                        "bg-[#485044] text-[#eae2d9]",
+                        "bg-[#0e221c] text-[#eae2d9]",
                         "px-6 py-3.5 text-[14px] font-medium",
                         "shadow-[0_10px_30px_rgba(0,0,0,0.25)]",
                         "transition hover:opacity-95",

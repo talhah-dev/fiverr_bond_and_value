@@ -77,11 +77,11 @@ export default function BlogPostPage({
 
     return (
         <Wrapper>
-            <main className="bg-[#e6d7c4] text-[#23352d]">
+            <main className="bg-[#e6d7c4] text-[#0e221c]">
                 <Header />
 
                 {loading && (
-                    <div className="mx-auto max-w-[1400px] px-4 md:px-10 pt-16 pb-24 text-sm text-[#23352d]/70">
+                    <div className="mx-auto max-w-[1400px] px-4 md:px-10 pt-16 pb-24 text-sm text-[#0e221c]/70">
                         Loading post…
                     </div>
                 )}
@@ -104,7 +104,7 @@ export default function BlogPostPage({
                                     </h1>
 
                                     {/* Right: Meta */}
-                                    <div className="flex md:justify-end gap-16 text-sm uppercase tracking-widest text-[#23352d]/65">
+                                    <div className="flex md:justify-end gap-16 text-sm uppercase tracking-widest text-[#0e221c]/65">
                                         <div className="text-right">
                                             <div className="mt-2">{post.category}</div>
                                         </div>
@@ -134,7 +134,7 @@ export default function BlogPostPage({
 
                         {/* Content */}
                         <section className="mx-auto max-w-[1400px] px-4 md:px-10 pb-20 md:pb-28">
-                            <article className="space-y-6 text-[#23352d]/80">
+                            <article className="space-y-6 text-[#0e221c]/80">
                                 {renderContent(post.content)}
                             </article>
                         </section>

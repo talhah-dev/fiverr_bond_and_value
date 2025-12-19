@@ -86,13 +86,13 @@ export default function HomePage() {
           className="bg-[#e6d7c4]"
           background={
             <div className="h-full w-full bg-[#e6d7c4] flex items-center justify-center">
-              <div className="font-serif text-[#4a5a52] leading-none tracking-wide text-[clamp(25px,14vw,220px)]">
-                Bond & Value
+              <div className="font-[PPPangaia] font-semibold text-[#0e221c] leading-none tracking-wide text-[clamp(25px,14vw,220px)]">
+                Bond & Vale
               </div>
             </div>
           }
         >
-          <div className="text-[#586053]">
+          <div className="text-[#0e221c]">
             <div className=" ">
 
               <SplitText
@@ -131,7 +131,7 @@ export default function HomePage() {
           <h2 className=" ">
             <SplitText
               text="WE&apos;RE PROUD TO BE RECOGNIZED AS INDUSTRY LEADERS."
-              className="text-[#23352d] md:text-6xl text-3xl uppercase !text-start max-w-3xl font-[PPPangaia] "
+              className="text-[#0e221c] md:text-6xl text-3xl uppercase !text-start max-w-3xl font-[PPPangaia] "
               delay={150}
               duration={2}
               splitType="lines"
@@ -142,7 +142,7 @@ export default function HomePage() {
           </h2>
 
           <p data-aos="fade-up"
-            className="mt-6 max-w-3xl text-[#23352d]/80 tracking-wide uppercase mb-8">
+            className="mt-6 max-w-3xl text-[#0e221c] tracking-wide uppercase mb-8">
             Our work and insights are featured across top global publications. Our set of experiences is based on trust, transparency and a commitment to greatness
           </p>
 
@@ -237,31 +237,7 @@ export default function HomePage() {
         </div>
 
 
-        <BlogSection intro="Ontdek de laatste trends, tips en inspiratie op het gebied van interieurontwerp en styling. Blijf op de hoogte van onze nieuwste projecten en inzichten."
-          items={[
-            {
-              href: "/blog/eerste-blogpost",
-              category: "Interieurdesign",
-              title: "Branding 101",
-              excerpt:
-                "How to Build a Powerful and Memorable Brand ",
-            },
-            {
-              href: "/blog/minimalistisch-wonen",
-              category: "Styling",
-              title: "Digital Marketing Trends 2024",
-              excerpt:
-                "What Your Brand Needs to Stay Ahead",
-            },
-            {
-              href: "/blog/duurzaam-design",
-              category: "Duurzaamheid",
-              title: "The Power of PR",
-              excerpt:
-                "How Strategic Public Relations Can Transform Your Brand ",
-            },
-          ]}
-        />
+        <BlogSection intro="Ontdek de laatste trends, tips en inspiratie op het gebied van interieurontwerp en styling. Blijf op de hoogte van onze nieuwste projecten en inzichten."/>
       </div >
     </Wrapper>
   )

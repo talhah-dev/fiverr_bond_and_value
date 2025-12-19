@@ -29,7 +29,7 @@ export default function ProjectsFeatureSection({
         console.log('All letters have animated!');
     };
     return (
-        <section className="bg-[#e6d7c4] text-[#23352d]">
+        <section className="bg-[#e6d7c4] text-[#0e221c]">
             <div className="mx-auto w-full max-w-[1450px] px-4 sm:px-6 lg:px-14 py-10 sm:py-14 lg:py-20">
                 <div className="hidden lg:grid grid-cols-[0.85fr_1.15fr] gap-12 items-stretch">
                     {/* LEFT BIG IMAGE */}
@@ -60,14 +60,14 @@ export default function ProjectsFeatureSection({
                         <div className="mt-10 flex-1 grid grid-cols-[1fr_1fr] gap-10 items-center">
                             {/* big title (center-ish) */}
                             <div className="pr-4">
-                                <div className="mb-6  font-serif tracking-widest text-[#23352d]/70">
+                                <div className="mb-6  font-serif tracking-widest text-[#0e221c]/70">
                                     {eyebrow}
                                 </div>
 
                                 <h2 className="">
                                     <SplitText
                                         text={title}
-                                        className="font-[PPPangaia] !text-start uppercase leading-[1] md:leading-[1.2] tracking-wide text-[#23352d] text-[clamp(2rem,4.2vw,2.7rem)]"
+                                        className="font-[PPPangaia] !text-start uppercase leading-[1] md:leading-[1.2] tracking-wide text-[#0e221c] text-[clamp(2rem,4.2vw,2.7rem)]"
                                         delay={150}
                                         duration={2}
                                         splitType="lines"
@@ -80,7 +80,7 @@ export default function ProjectsFeatureSection({
                             {/* paragraph + button */}
                             <div className="pl-2" data-aos="fade-up"
 >
-                                <p className="text-[#23352d]/80 text-sm">
+                                <p className="text-[#0e221c]/80 text-sm">
                                     {body}
                                 </p>
 
@@ -109,7 +109,7 @@ export default function ProjectsFeatureSection({
                     </div>
 
                     <div className="flex items-center justify-between">
-                        <div className="font-serif tracking-widest text-[#23352d]/70">
+                        <div className="font-serif tracking-widest text-[#0e221c]/70">
                             {eyebrow}
                         </div>
 
@@ -126,11 +126,11 @@ export default function ProjectsFeatureSection({
 
                     <div className="">
 
-                        <h2 className="font-[PPPangaia] mb-4 uppercase leading-[1.2] tracking-wide text-[#23352d] text-[clamp(34px,9vw,54px)]">
+                        <h2 className="font-[PPPangaia] mb-4 uppercase leading-[1.2] tracking-wide text-[#0e221c] text-[clamp(34px,9vw,54px)]">
                             {title}
                         </h2>
 
-                        <p className="text-[#23352d] text-[15px]">
+                        <p className="text-[#0e221c] text-[15px]">
                             {body}
                         </p>
                     </div>

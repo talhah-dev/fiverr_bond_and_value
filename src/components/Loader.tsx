@@ -31,7 +31,7 @@ export default function TabLoader({
 
     // auto hide
     useEffect(() => {
-        const t = window.setTimeout(() => setVisible(false), (delay + 0.05) * 1000);
+        const t = window.setTimeout(() => setVisible(false), (delay + 0.05) * 2000);
         return () => window.clearTimeout(t);
     }, [delay]);
 
@@ -42,7 +42,7 @@ export default function TabLoader({
         <AnimatePresence>
             {visible && (
                 <motion.div
-                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0f241f]"
+                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0e221c]"
                     aria-label="Loading"
                     role="status"
                     initial={{ y: enter ? fromY : 0 }}   // 👈 NEW
@@ -58,12 +58,13 @@ export default function TabLoader({
                     }}
                 >
                     <Image
+                        data-aos="zoom-out"
                         src="/loaderlogo.svg"
                         alt="Bond & Value"
                         width={420}
                         height={120}
                         priority
-                        className="max-w-4xl w-full h-auto px-6"
+                        className="max-w-4xl w-auto h-7 px-6"
                     />
                 </motion.div>
             )}

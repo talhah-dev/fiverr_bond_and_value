@@ -50,7 +50,7 @@ export default function ExpandingHeroNoSticky({
                         <div className="">
                             <SplitText
                                 text={quote}
-                                className="whitespace-pre-line font-[PPPangaia] uppercase leading-[0.95] tracking-wide text-[#23352d]/70 text-[clamp(28px,3.6vw,64px)]"
+                                className="whitespace-pre-line font-[PPPangaia] uppercase leading-[0.95] tracking-wide text-[#0e221c]/70 text-[clamp(28px,3.6vw,64px)]"
                                 delay={150}
                                 duration={2}
                                 splitType="lines"

@@ -102,7 +102,7 @@ export default function Header() {
           <div className="mx-auto flex h-24 w-full max-w-[1400px] items-center justify-between px-6">
             <div className="copyright-text lg:flex hidden items-center">
               <div className={`${!changeColor ? "text-white" : "text-black/90"}`}>
-                Bonf & Value©
+                Bond & Vale©
               </div>
             </div>
 
