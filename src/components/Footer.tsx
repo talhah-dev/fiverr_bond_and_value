@@ -6,6 +6,7 @@ import { Instagram, Facebook, Linkedin } from "lucide-react";
 import TicketButton from "@/components/TicketButton";
 import { ParallaxImage } from "./ParallaxImage";
 import SplitText from "./SplitText";
+import DecryptedText from "./DecryptedText";
 
 type InstaItem = {
     src: string;
@@ -159,11 +160,12 @@ export default function Footer() {
                     <p className="md:block hidden">Portfolio</p>
 
                     <div className="flex md:justify-center justify-between gap-6">
-                        <Link href="/algemene-voorwaarden" className="underline">
-                            Terms and Conditions
+                        <Link href="/terms-and-conditions" className="underline">
+                            <DecryptedText text="Terms and Conditions" className="text-[#485045] underline " useOriginalCharsOnly animateOn="hover" parentClassName="text-[#485045] cursor-pointer underline    " speed={50} />
                         </Link>
-                        <Link href="/privacy-beleid" className="underline">
-                            Privacy Policy
+                        <Link href="/privacy-policy" className="underline">
+                            <DecryptedText text="Privacy Policy" className="text-[#485045] underline " useOriginalCharsOnly
+                                animateOn="hover" parentClassName="text-[#485045] cursor-pointer underline  " speed={50} />
                         </Link>
                     </div>
 
