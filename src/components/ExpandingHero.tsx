@@ -19,7 +19,7 @@ export default function ExpandingHeroNoSticky({
     const { scrollYProgress } = useScroll({
         target: ref,
         // start when section enters, finish when it leaves
-        offset: ["start 85%", "end 100%"],
+        offset: ["start 100%", "end 100%"],
     });
 
     const width = useTransform(scrollYProgress, [0, 1], ["95%", "100%"]);

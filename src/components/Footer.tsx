@@ -122,7 +122,7 @@ export default function Footer({
                         {instaItems.map((item, i) => (
                             <div
                                 key={i}
-                                className="group relative aspect-[4/2.5] overflow-hidden"
+                                className="group relative h-32 overflow-hidden"
                             >
                                 <ParallaxImage
                                     src={item.src}
@@ -135,7 +135,7 @@ export default function Footer({
                                     height={500}
                                     src={item.src}
                                     alt={item.label}
-                                    className="object-cover md:hidden"
+                                    className="object-cover md:hidden "
                                 />
 
                                 <div className="absolute inset-0 flex items-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">

@@ -14,25 +14,71 @@ import Footer from '@/components/Footer';
 import ExpandingHero from '@/components/ExpandingHero';
 import ServicesSection from '@/components/ServicesSection';
 import TabLoader from '@/components/Loader';
+import FlowingMenuComp from '@/components/FlowingMenuComp';
+import TestimonialsSlider from '@/components/TestimonialsSlider';
+import ScrollStackComp from '@/components/ScrollStackComp';
 
 type CardItem =
   | { id: string; type: "logo"; title: string }
   | { id: string; type: "image"; img: string; title?: string };
 
 const items = [
-  { id: "forbes", type: "logo", title: "Forbes" },
-  { id: "img1", type: "image", img: "/images/logoicon.webp" },
-  { id: "entre", type: "logo", title: "Entrepreneur" },
-  { id: "wsj", type: "logo", title: "WSJ" },
-  { id: "img2", type: "image", img: "/images/logoicon.webp" },
-  { id: "bi", type: "logo", title: "BUSINESS\nINSIDER" },
-  { id: "ibt", type: "logo", title: "International\nBusiness\nTimes." },
-  { id: "newsweek", type: "logo", title: "Newsweek" },
-  { id: "img3", type: "image", img: "/images/logoicon.webp" },
-  { id: "grazia", type: "logo", title: "GRAZIA" },
-  { id: "img4", type: "image", img: "/images/logoicon.webp" },
-  { id: "img5", type: "image", img: "/images/logoicon.webp" },
+  { id: "image1", type: "image", img: "/company/img1.webp" },
+  { id: "image2", type: "image", img: "/company/img2.webp" },
+  { id: "image3", type: "image", img: "/company/img3.webp" },
+  { id: "image4", type: "image", img: "/company/img4.webp" },
+  { id: "image5", type: "image", img: "/company/img5.webp" },
+  { id: "image6", type: "image", img: "/company/img6.webp" },
+  { id: "image7", type: "image", img: "/company/img7.webp" },
+  { id: "image8", type: "image", img: "/company/img8.webp" },
+  { id: "image9", type: "image", img: "/company/img9.webp" },
+  { id: "image10", type: "image", img: "/company/img10.webp" },
+  { id: "image11", type: "image", img: "/company/img11.webp" },
+  { id: "image12", type: "image", img: "/company/img12.webp" }
 ] satisfies CardItem[];
+
+const testimonials = [
+  {
+    name: "Bryan Woods",
+    headline: "Bond & Vale – legit and effective",
+    body: "Bond & Vale did what they said they would do and placed us in three notable publications...",
+  },
+  {
+    name: "Lawrence Klein",
+    headline: "Clear, actionable insights",
+    body: "They provided me with clear, actionable insights that reshaped our brand strategy...",
+  },
+  {
+    name: "Emily Aldrich",
+    headline: "Effective and collaborative team",
+    body: "They delivered on their promise to enhance our presence and helped us build credibility...",
+  },
+  {
+    name: "Emily Aldrich",
+    headline: "Effective and collaborative team",
+    body: "They delivered on their promise to enhance our presence and helped us build credibility...",
+  },
+  {
+    name: "Emily Aldrich",
+    headline: "Effective and collaborative team",
+    body: "They delivered on their promise to enhance our presence and helped us build credibility...",
+  },
+  {
+    name: "Emily Aldrich",
+    headline: "Effective and collaborative team",
+    body: "They delivered on their promise to enhance our presence and helped us build credibility...",
+  },
+  {
+    name: "Emily Aldrich",
+    headline: "Effective and collaborative team",
+    body: "They delivered on their promise to enhance our presence and helped us build credibility...",
+  },
+  {
+    name: "Emily Aldrich",
+    headline: "Effective and collaborative team",
+    body: "They delivered on their promise to enhance our presence and helped us build credibility...",
+  },
+];
 
 const tabs = [
   {
@@ -72,7 +118,7 @@ export default function HomePage() {
     console.log('All letters have animated!');
   };
   return (
-    <div className='bg-[#e6d7c4] min-h-screen'>
+    <div className='bg-[#e0d1be] min-h-screen'>
 
       {/* <Loader/> */}
 
@@ -201,7 +247,7 @@ export default function HomePage() {
 
         <ShufflingCardsGrid
           items={items}
-          intervalMs={3500}     // wait longer between shuffles
+          intervalMs={3500}     
           movesPerTick={4}      // only a couple cards move
           animDuration={2}    // slow + smooth motion
         />
@@ -209,6 +255,8 @@ export default function HomePage() {
       </section>
 
       {/* <ScrollTabsSection tabs={tabs} className="mt-0" /> */}
+
+      {/* <ScrollStackComp /> */}
 
 
       <ProjectsFeatureSection
@@ -224,7 +272,9 @@ export default function HomePage() {
 
 
 
-
+      <div className="py-10 bg-[#e6d7c4]">
+        <FlowingMenuComp />
+      </div>
 
 
       <ServicesSection
@@ -280,6 +330,10 @@ export default function HomePage() {
         EN RUST"
         ' />
 
+      <div className="overflow-x-hidden">
+        <TestimonialsSlider testimonials={testimonials} />
+      </div>
+
 
       <BlogSection intro="Ontdek de laatste trends, tips en inspiratie op het gebied van interieurontwerp en styling. Blijf op de hoogte van onze nieuwste projecten en inzichten."
         items={[
@@ -311,7 +365,7 @@ export default function HomePage() {
       <Footer
         instaItems={[
           { src: "/img3.png", label: "Japandi Toilet" },
-          { src: "/img4.png", label: "Woonkamer" },
+          { src: "/img10.jpg", label: "Woonkamer" },
           { src: "/img5.jpg", label: "Badkamer" },
           { src: "/img6.jpg", label: "Keuken" },
           { src: "/img7.jpg", label: "Slaapkamer" },
