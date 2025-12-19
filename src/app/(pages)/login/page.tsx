@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Wrapper from "@/app/Wrapper";
 import Header from "@/components/Header";
 import { ArrowRight, Eye, EyeOff, Lock, Mail } from "lucide-react";
@@ -10,7 +10,6 @@ import { authClient } from "@/lib/auth-client";
 
 export default function AdminLoginPage() {
     const router = useRouter();
-    const searchParams = useSearchParams();
 
     const [showPass, setShowPass] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -21,14 +20,11 @@ export default function AdminLoginPage() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
         if (loading) return;
-        setLoading(true);
 
+        setLoading(true);
         try {
-            // Optional: allow ?callbackURL=... in the URL, else default to /dashboard
-            const callbackURL =
-                searchParams.get("callbackURL") ?? `${window.location.origin}/dashboard`;
+            const callbackURL = `${window.location.origin}/dashboard`;
 
             const { data, error } = await authClient.signIn.email({
                 email,
@@ -38,17 +34,16 @@ export default function AdminLoginPage() {
             });
 
             if (error) {
-                // You can customize based on error.code / error.message if Better Auth provides it
                 alert(error.message || "Invalid email or password.");
                 setLoading(false);
                 return;
             }
 
-            // If Better Auth redirects automatically via callbackURL, you may not need this.
-            // But keeping it is fine as a fallback:
+            // If Better Auth redirects automatically, this will still be fine
             router.push("/dashboard");
         } catch (err: any) {
             alert(err?.message || "Something went wrong. Please try again.");
+        } finally {
             setLoading(false);
         }
     };
@@ -60,7 +55,6 @@ export default function AdminLoginPage() {
 
                 <section className="mx-auto max-w-[1450px] px-4 lg:px-14 pt-14 lg:pt-20 pb-20">
                     <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
-                        {/* Left intro */}
                         <div className="pt-6">
                             <div className="text-xs uppercase tracking-[0.22em] text-[#23352d]/60">
                                 Admin Access
@@ -74,18 +68,8 @@ export default function AdminLoginPage() {
                                 This area is restricted. Use your admin credentials to manage
                                 content and site updates.
                             </p>
-
-                            <div className="mt-10 flex flex-wrap items-center gap-3">
-                                <span className="rounded-full border border-black/10 bg-white/10 px-4 py-2 text-sm text-[#23352d]/80">
-                                    Secure Access
-                                </span>
-                                <span className="rounded-full border border-black/10 bg-white/10 px-4 py-2 text-sm text-[#23352d]/80">
-                                    Role Protected
-                                </span>
-                            </div>
                         </div>
 
-                        {/* Right card */}
                         <div className="border border-black/10 bg-white/10">
                             <div className="p-6 sm:p-8">
                                 <div className="flex items-start justify-between gap-6">
@@ -104,7 +88,6 @@ export default function AdminLoginPage() {
                                 </div>
 
                                 <form onSubmit={handleSubmit} className="mt-8 space-y-4">
-                                    {/* Email */}
                                     <div>
                                         <label className="block text-[10px] uppercase tracking-[0.22em] text-[#23352d]/60">
                                             Email
@@ -123,7 +106,6 @@ export default function AdminLoginPage() {
                                         </div>
                                     </div>
 
-                                    {/* Password */}
                                     <div>
                                         <label className="block text-[10px] uppercase tracking-[0.22em] text-[#23352d]/60">
                                             Password
@@ -145,16 +127,11 @@ export default function AdminLoginPage() {
                                                 className="text-[#23352d]/60 hover:text-[#23352d]"
                                                 aria-label={showPass ? "Hide password" : "Show password"}
                                             >
-                                                {showPass ? (
-                                                    <EyeOff className="h-4 w-4" />
-                                                ) : (
-                                                    <Eye className="h-4 w-4" />
-                                                )}
+                                                {showPass ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                                             </button>
                                         </div>
                                     </div>
 
-                                    {/* Remember + back */}
                                     <div className="flex items-center justify-between gap-4 pt-2">
                                         <label className="flex items-center gap-2 text-sm text-[#23352d]/70">
                                             <input
@@ -174,7 +151,6 @@ export default function AdminLoginPage() {
                                         </Link>
                                     </div>
 
-                                    {/* Submit */}
                                     <button
                                         type="submit"
                                         disabled={loading}
@@ -184,7 +160,6 @@ export default function AdminLoginPage() {
                                         <ArrowRight className="h-4 w-4" />
                                     </button>
 
-                                    {/* Small note */}
                                     <p className="pt-4 text-xs text-[#23352d]/55 leading-5">
                                         By signing in, you confirm you are authorized to access this
                                         administration area.
