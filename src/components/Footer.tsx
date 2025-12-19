@@ -7,11 +7,9 @@ import TicketButton from "@/components/TicketButton";
 import { ParallaxImage } from "./ParallaxImage";
 import SplitText from "./SplitText";
 import DecryptedText from "./DecryptedText";
-
-type InstaItem = {
-    src: string;
-    label: string;
-};
+import axios from "axios";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const instaItems = [
     { src: "/img3.png", label: "Editorial" },
@@ -24,6 +22,50 @@ const instaItems = [
 
 
 export default function Footer() {
+
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const handleSend = async () => {
+        if (loading) return;
+
+        // validation
+        if (!email || !message) {
+            toast("Email and message are required.");
+            return;
+        }
+
+        setLoading(true);
+        try {
+            const res = await axios.post("/api/inquiries", {
+                email,
+                phone,
+                message,
+                source: "contact-page",
+                status: "new",
+            });
+
+            if (res.data?.success) {
+                toast(res.data?.message || "Submitted successfully!");
+                setEmail("");
+                setPhone("");
+                setMessage("");
+            } else {
+                toast(res.data?.message || "Submission failed.");
+            }
+        } catch (err: any) {
+            toast(
+                err?.response?.data?.message ||
+                err?.message ||
+                "Something went wrong."
+            );
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const handleAnimationComplete = () => {
     };
     return (
@@ -43,60 +85,70 @@ export default function Footer() {
 
                     </h2>
 
-                    <form className="space-y-2">
+                    <div className="space-y-2">
                         <div className="grid grid-cols-2 md:gap-4 gap-2">
                             <div className="space-y-2">
-                                <label
-                                    htmlFor="email"
-                                    className="text-sm text-[#4a5246]/90"
-                                >
+                                <label htmlFor="email" className="text-sm text-[#4a5246]/90">
                                     Email Address
                                 </label>
                                 <input
                                     id="email"
                                     name="email"
                                     type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     className="w-full bg-[#e2d3c0]/70 mt-1 px-4 py-2.5 outline-none"
+                                    disabled={loading}
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <label
-                                    htmlFor="phone"
-                                    className="text-sm text-[#4a5246]/90"
-                                >
+                                <label htmlFor="phone" className="text-sm text-[#4a5246]/90">
                                     Phone
                                 </label>
                                 <input
                                     id="phone"
                                     name="phone"
                                     type="tel"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
                                     className="w-full bg-[#e2d3c0]/70 mt-1 px-4 py-2.5 outline-none"
+                                    disabled={loading}
                                 />
                             </div>
                         </div>
 
                         <div className="space-y-2">
-                            <label
-                                htmlFor="message"
-                                className="text-sm text-[#4a5246]/90"
-                            >
+                            <label htmlFor="message" className="text-sm text-[#4a5246]/90">
                                 Message
                             </label>
                             <textarea
                                 id="message"
                                 name="message"
                                 rows={1}
+                                value={message}
+                                onChange={(e) => setMessage(e.target.value)}
                                 className="w-full bg-[#e2d3c0]/70 mt-1 px-4 py-2.5 outline-none resize-none"
+                                disabled={loading}
                             />
                         </div>
 
                         <p className="text-sm text-[#4a5246]/90 mb-5">
-                            By clicking Let's Bond, you agree to our Terms and Conditions and Privacy Policy
+                            By clicking Let's Bond, you agree to our Terms and Conditions and Privacy
+                            Policy
                         </p>
 
-                        <TicketButton href="/contact" label="Let's Bond" />
-                    </form>
+                        {/* Click ONLY — Enter won't submit because there is no <form> */}
+                        <div
+                            onClick={handleSend}
+                            className={loading ? "pointer-events-none opacity-70" : ""}
+                        >
+                            <TicketButton
+                                href="#"
+                                label={loading ? "Submitting..." : "Let's Bond"}
+                            />
+                        </div>
+                    </div>
 
 
                 </div>

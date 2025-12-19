@@ -10,6 +10,7 @@ export interface IContactMessage extends Document {
 
     createdAt: Date;
     updatedAt: Date;
+    readAt: Date | null;
 }
 
 const ContactMessageSchema: Schema<IContactMessage> = new Schema(
@@ -41,6 +42,10 @@ const ContactMessageSchema: Schema<IContactMessage> = new Schema(
             type: String,
             enum: ["new", "read", "replied"],
             default: "new",
+        },
+        readAt: {
+            type: Date,
+            default: null,
         },
     },
     { timestamps: true }

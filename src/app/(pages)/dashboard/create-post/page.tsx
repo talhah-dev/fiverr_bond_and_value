@@ -1,19 +1,108 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Link from "next/link";
-import {
-    ArrowRight,
-    Upload,
-    Save,
-    Eye,
-    FileText,
-} from "lucide-react";
-import Wrapper from "@/app/Wrapper";
+import axios from "axios";
+import { upload } from "@vercel/blob/client";
+import { toast } from "sonner";
+import { ArrowRight, Upload, Save, Eye, FileText } from "lucide-react";
 import Header from "@/components/Header";
+
+function slugify(input: string) {
+    return input
+        .toLowerCase()
+        .trim()
+        .replace(/['"]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)+/g, "");
+}
 
 export default function CreatePostPage() {
     const [status, setStatus] = useState<"draft" | "published">("draft");
+
+    const [title, setTitle] = useState("");
+    const [category, setCategory] = useState("");
+    const [excerpt, setExcerpt] = useState("");
+    const [content, setContent] = useState("");
+    const [readTime, setReadTime] = useState("2m");
+
+    const [metaTitle, setMetaTitle] = useState("");
+    const [metaDescription, setMetaDescription] = useState("");
+
+    const [heroFile, setHeroFile] = useState<File | null>(null);
+    const [heroUrl, setHeroUrl] = useState<string>("");
+
+    const [uploading, setUploading] = useState(false);
+    const [saving, setSaving] = useState(false);
+
+    const slug = useMemo(() => slugify(title || ""), [title]);
+
+    const uploadFeaturedImage = async () => {
+        if (!heroFile) return "";
+
+        setUploading(true);
+        try {
+            const blob = await upload(heroFile.name, heroFile, {
+                access: "public",
+                handleUploadUrl: "/api/upload",
+            });
+
+            setHeroUrl(blob.url);
+            toast("Featured image uploaded.");
+            return blob.url;
+        } catch (e: any) {
+            toast(e?.message || "Image upload failed");
+            return "";
+        } finally {
+            setUploading(false);
+        }
+    };
+
+    const createPost = async (nextStatus: "draft" | "published") => {
+        if (saving) return;
+
+        if (!title || !category || !content) {
+            toast("Title, category, and content are required.");
+            return;
+        }
+        if (!slug) {
+            toast("Slug could not be generated from title.");
+            return;
+        }
+
+        setSaving(true);
+        try {
+            // Upload image if user selected one and we don't have URL yet
+            let finalHeroUrl = heroUrl;
+            if (!finalHeroUrl && heroFile) {
+                finalHeroUrl = await uploadFeaturedImage();
+            }
+
+            const res = await axios.post("/api/blog", {
+                title,
+                slug,
+                category,
+                excerpt,
+                heroImage: finalHeroUrl,
+                readTime,
+                content,
+                status: nextStatus,
+                // optional SEO fields (only if you add them to schema later)
+                metaTitle,
+                metaDescription,
+            });
+
+            if (res.data?.success) {
+                toast(nextStatus === "published" ? "Post published." : "Draft saved.");
+            } else {
+                toast(res.data?.message || "Failed to create post.");
+            }
+        } catch (e: any) {
+            toast(e?.response?.data?.message || e?.message || "Failed to create post.");
+        } finally {
+            setSaving(false);
+        }
+    };
 
     return (
         <main className="min-h-screen bg-[#e6d7c4] text-[#23352d]">
@@ -29,6 +118,9 @@ export default function CreatePostPage() {
                         <h1 className="mt-4 font-[PPPangaia] uppercase leading-[0.95] tracking-wide text-[clamp(2rem,4vw,3.2rem)]">
                             Create Post
                         </h1>
+                        <div className="mt-2 text-sm text-[#23352d]/60">
+                            Slug: <span className="font-mono">{slug || "—"}</span>
+                        </div>
                     </div>
 
                     <div className="flex gap-3">
@@ -53,6 +145,8 @@ export default function CreatePostPage() {
                             <input
                                 type="text"
                                 placeholder="Enter blog title"
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
                                 className="mt-2 w-full border border-black/10 bg-white/20 px-5 py-4 text-lg outline-none focus:border-black/20"
                             />
                         </div>
@@ -64,6 +158,21 @@ export default function CreatePostPage() {
                             <input
                                 type="text"
                                 placeholder="post category (eg: Trend, Sports )"
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
+                                className="mt-2 w-full border border-black/10 bg-white/20 px-5 py-3 text-sm outline-none focus:border-black/20"
+                            />
+                        </div>
+
+                        <div>
+                            <label className="text-xs uppercase tracking-[0.22em] text-[#23352d]/60">
+                                Read Time
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="e.g. 2m"
+                                value={readTime}
+                                onChange={(e) => setReadTime(e.target.value)}
                                 className="mt-2 w-full border border-black/10 bg-white/20 px-5 py-3 text-sm outline-none focus:border-black/20"
                             />
                         </div>
@@ -76,6 +185,8 @@ export default function CreatePostPage() {
                             <textarea
                                 rows={3}
                                 placeholder="Short summary shown on blog listing"
+                                value={excerpt}
+                                onChange={(e) => setExcerpt(e.target.value)}
                                 className="mt-2 w-full border border-black/10 bg-white/20 px-5 py-4 outline-none focus:border-black/20"
                             />
                         </div>
@@ -88,25 +199,31 @@ export default function CreatePostPage() {
                             <textarea
                                 rows={14}
                                 placeholder="Write the full blog content here..."
+                                value={content}
+                                onChange={(e) => setContent(e.target.value)}
                                 className="mt-2 w-full border border-black/10 bg-white/20 px-5 py-4 leading-7 outline-none focus:border-black/20"
                             />
                         </div>
 
-                        {/* SEO */}
+                        {/* SEO (optional – stored only if you add fields in schema) */}
                         <div className="border-t border-black/10 pt-8">
                             <div className="text-xs uppercase tracking-[0.22em] text-[#23352d]/60">
-                                SEO 
+                                SEO
                             </div>
 
                             <div className="mt-4 space-y-4">
                                 <input
                                     type="text"
                                     placeholder="Meta title"
+                                    value={metaTitle}
+                                    onChange={(e) => setMetaTitle(e.target.value)}
                                     className="w-full border border-black/10 bg-white/20 px-5 py-3 text-sm outline-none"
                                 />
                                 <textarea
                                     rows={2}
                                     placeholder="Meta description"
+                                    value={metaDescription}
+                                    onChange={(e) => setMetaDescription(e.target.value)}
                                     className="w-full border border-black/10 bg-white/20 px-5 py-3 text-sm outline-none"
                                 />
                             </div>
@@ -122,15 +239,33 @@ export default function CreatePostPage() {
                                 <FileText className="h-5 w-5 text-[#23352d]/60" />
                             </div>
 
+                            <div className="mt-4 text-sm text-[#23352d]/60">
+                                Current: <span className="font-medium">{status}</span>
+                            </div>
+
                             <div className="mt-6 flex flex-col gap-3">
-                                <button className="inline-flex items-center justify-center gap-2 rounded-full border border-black/15 bg-white/20 px-4 py-3 text-sm hover:bg-white/30">
+                                <button
+                                    disabled={saving || uploading}
+                                    onClick={() => {
+                                        setStatus("draft");
+                                        createPost("draft");
+                                    }}
+                                    className="inline-flex items-center justify-center gap-2 rounded-full border border-black/15 bg-white/20 px-4 py-3 text-sm hover:bg-white/30 disabled:opacity-60"
+                                >
                                     <Save className="h-4 w-4" />
-                                    Save Draft
+                                    {saving && status === "draft" ? "Saving..." : "Save Draft"}
                                 </button>
 
-                                <button className="inline-flex items-center justify-center gap-2 rounded-full border border-black/15 bg-[#3f4b3f] px-4 py-3 text-sm text-[#e6d7c4] hover:opacity-90">
+                                <button
+                                    disabled={saving || uploading}
+                                    onClick={() => {
+                                        setStatus("published");
+                                        createPost("published");
+                                    }}
+                                    className="inline-flex items-center justify-center gap-2 rounded-full border border-black/15 bg-[#3f4b3f] px-4 py-3 text-sm text-[#e6d7c4] hover:opacity-90 disabled:opacity-60"
+                                >
                                     <ArrowRight className="h-4 w-4" />
-                                    Publish
+                                    {saving && status === "published" ? "Publishing..." : "Publish"}
                                 </button>
                             </div>
                         </div>
@@ -145,8 +280,36 @@ export default function CreatePostPage() {
                             <div className="mt-4 flex flex-col items-center justify-center border border-dashed border-black/20 bg-white/20 px-4 py-10 text-center">
                                 <Upload className="h-6 w-6 text-[#23352d]/50" />
                                 <p className="mt-2 text-sm text-[#23352d]/60">
-                                    Upload image
+                                    {heroUrl ? "Image uploaded" : "Choose an image to upload"}
                                 </p>
+
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="mt-4 w-full text-sm"
+                                    onChange={(e) => setHeroFile(e.target.files?.[0] || null)}
+                                    disabled={uploading || saving}
+                                />
+
+                                <button
+                                    disabled={!heroFile || uploading || saving}
+                                    onClick={uploadFeaturedImage}
+                                    className="mt-4 inline-flex items-center justify-center gap-2 rounded-full border border-black/15 bg-white/20 px-4 py-2 text-sm hover:bg-white/30 disabled:opacity-60"
+                                >
+                                    <Upload className="h-4 w-4" />
+                                    {uploading ? "Uploading..." : "Upload Image"}
+                                </button>
+
+                                {heroUrl ? (
+                                    <a
+                                        href={heroUrl}
+                                        target="_blank"
+                                        className="mt-3 text-xs uppercase tracking-widest text-[#23352d]/60 hover:text-[#23352d]"
+                                        rel="noreferrer"
+                                    >
+                                        View uploaded image
+                                    </a>
+                                ) : null}
                             </div>
                         </div>
                     </div>

@@ -12,6 +12,7 @@
     "@gsap/react": "^2.1.2",
     "@radix-ui/react-slot": "^1.2.4",
     "@studio-freight/lenis": "^1.0.42",
+    "@vercel/blob": "^2.0.0",
     "aos": "^2.3.4",
     "axios": "^1.13.2",
     "better-auth": "^1.4.7",
