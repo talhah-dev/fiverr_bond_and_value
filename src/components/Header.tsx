@@ -324,7 +324,7 @@ export default function Header() {
                   onClick={closeMenu}
                   className="lg:hidden flex items-end justify-end cursor-pointer"
                 >
-                  <span className="text-[#23352d] px-5 font-medium pt-5">Close</span>
+                  <span className="text-[#0e221c] px-5 font-medium pt-5">Close</span>
                 </button>
 
                 {menuItems.map((item) => (
@@ -347,13 +347,13 @@ export default function Header() {
                         group-hover:opacity-100 group-hover:translate-x-0
                       "
                     >
-                      <ArrowRight className="h-[clamp(1.25rem,2.5vw,1.75rem)] w-[clamp(1.25rem,2.5vw,1.75rem)] text-[#23352d]/60" />
+                      <ArrowRight className="h-[clamp(1.25rem,2.5vw,1.75rem)] w-[clamp(1.25rem,2.5vw,1.75rem)] text-[#0e221c]/60" />
                     </span>
 
                     <div className="flex w-full items-center justify-between">
                       <div
                         className="
-                          font-[PPPangaia] uppercase leading-[0.95] text-[#23352d]
+                          font-[PPPangaia] uppercase leading-[0.95] text-[#0e221c]
                           text-[clamp(2.2rem,6vw,3.5rem)]
                           transition-transform duration-300 ease-out
                           group-hover:translate-x-[clamp(2.25rem,4vw,3.25rem)]
@@ -365,7 +365,7 @@ export default function Header() {
                       <ArrowRight
                         className="
                           h-[clamp(1.25rem,2.5vw,1.75rem)] w-[clamp(1.25rem,2.5vw,1.75rem)]
-                          text-[#23352d]/60
+                          text-[#0e221c]/60
                           transition-opacity duration-300 ease-out
                           group-hover:opacity-0
                         "
@@ -380,7 +380,7 @@ export default function Header() {
             <div
               ref={rightRef}
               // ✅ pre-paint hidden ONLY by opacity (no transform conflict)
-              className="lg:block hidden relative h-full bg-[#3f4b3f] text-white overflow-hidden opacity-0"
+              className="lg:block hidden relative h-full bg-[#0e221c] text-white overflow-hidden opacity-0"
             >
               <div className="flex h-full flex-col justify-between px-[clamp(1rem,3vw,2.5rem)] py-[clamp(1rem,3vh,2.5rem)]">
                 <div className="relative flex items-start justify-center">
