@@ -422,7 +422,7 @@ export default function Header() {
 
                   <div className="socials-wrapper flex items-center gap-[clamp(0.75rem,2vw,1.5rem)]">
                     <Link
-                      href="https://www.instagram.com/tadesign.nl/"
+                      href="https://www.instagram.com/bondandvale"
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white
@@ -432,7 +432,7 @@ export default function Header() {
                     </Link>
 
                     <a
-                      href="https://www.tiktok.com/@ta.creatives.design"
+                      href="https://www.tiktok.com/@bondandvale"
                       target="_blank"
                       rel="noreferrer"
                       aria-label="TikTok"
@@ -443,7 +443,7 @@ export default function Header() {
                     </a>
 
                     <a
-                      href="https://www.facebook.com/p/TA-Creatives-Design-100086778818977/"
+                      href="https://www.facebook.com/share/1BS1H9f9mn/?mibextid=wwXIfr"
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white
@@ -453,7 +453,7 @@ export default function Header() {
                     </a>
 
                     <a
-                      href="https://www.linkedin.com/in/anne-tijhof-2a1176198/?originalSubdomain=nl"
+                      href="https://www.linkedin.com/company/bond-vale"
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex items-center justify-center rounded-full border border-white/15 text-white/80 hover:text-white
@@ -465,22 +465,22 @@ export default function Header() {
                 </div>
 
                 <div className="menu-info-details flex w-full items-center justify-between text-white/80 text-[clamp(0.85rem,1.2vw,1rem)]">
-                  <div className="text_rg-text">Hellendoorn</div>
+                  <div className="text_rg-text">Home</div>
 
                   <div className="menu-legals flex gap-[clamp(0.75rem,2vw,1.5rem)]">
                     <Link
-                      href="/algemene-voorwaarden"
+                      href="/terms-and-conditions"
                       className="text_rg-button underline underline-offset-4 hover:text-white"
                       onClick={closeMenu}
                     >
-                      Algemene Voorwaarden
+                      Terms and Conditions
                     </Link>
                     <Link
-                      href="/privacy-beleid"
+                      href="/privacy-policy"
                       className="text_rg-button underline underline-offset-4 hover:text-white"
                       onClick={closeMenu}
                     >
-                      Privacy Beleid
+                      Privacy Policy
                     </Link>
                   </div>
                 </div>
