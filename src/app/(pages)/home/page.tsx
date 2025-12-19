@@ -243,9 +243,9 @@ AND PEACE"
             {
               href: "/blog/minimalistisch-wonen",
               category: "Styling",
-              title: "What Your Brand Needs to Stay Ahead",
+              title: "Digital Marketing Trends 2024",
               excerpt:
-                "Digital Marketing Trends 2024 - What Your Brand Needs to Stay Ahead",
+                "What Your Brand Needs to Stay Ahead",
             },
             {
               href: "/blog/duurzaam-design",
