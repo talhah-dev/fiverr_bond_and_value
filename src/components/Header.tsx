@@ -6,6 +6,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ArrowRight, X, Instagram, Facebook, Linkedin } from "lucide-react";
 import DecryptedText from '@/components/DecryptedText'
+import { usePathname } from "next/navigation";
 
 
 export default function Header() {
@@ -20,7 +21,6 @@ export default function Header() {
   const closeMenu = () => setMenuOpen(false);
   const toggleMenu = () => setMenuOpen((v) => !v);
 
-  // ESC closes
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") closeMenu();
@@ -29,7 +29,6 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  // Lock scroll
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -37,14 +36,12 @@ export default function Header() {
     };
   }, [menuOpen]);
 
-  // GSAP open/close animation
   useEffect(() => {
     const overlay = overlayRef.current;
     const left = leftRef.current;
     const right = rightRef.current;
     if (!overlay || !left || !right) return;
 
-    // create timeline once
     if (!tlRef.current) {
       gsap.set(overlay, { autoAlpha: 0, pointerEvents: "none" });
       gsap.set(left, { yPercent: -100, autoAlpha: 1 });
@@ -52,17 +49,14 @@ export default function Header() {
 
       const tl = gsap.timeline({ paused: true });
 
-      // overlay fade in
       tl.to(overlay, { autoAlpha: 1, duration: 0.15, ease: "power1.out" }, 0);
 
-      // left panel first (from top)
       tl.to(
         left,
         { yPercent: 0, duration: 0.55, ease: "expo.out" },
         0
       );
 
-      // right panel after 500ms
       tl.to(
         right,
         { yPercent: 0, duration: 0.55, ease: "expo.out" },
@@ -80,7 +74,6 @@ export default function Header() {
     } else {
       // close animation (reverse)
       tl.reverse();
-      // disable pointer events once fully hidden
       tl.eventCallback("onReverseComplete", () => {
         gsap.set(overlay, { pointerEvents: "none" });
       });
@@ -95,16 +88,18 @@ export default function Header() {
     { href: "/privacy-policy", label: "Privacy Policy" },
   ];
 
+  const path = usePathname();
+  const changeColor = path === "/" ? false : true;
+
   return (
     <>
-      {/* TOP NAVBAR (keep your Webflow classes, Tailwind for layout) */}
       <header className="navbar relative z-[999] w-full">
         <div
           className="w-full"
         >
           <div className="mx-auto flex h-24 w-full max-w-[1400px] items-center justify-between px-6">
             <div className="copyright-text lg:flex hidden items-center">
-              <div className="text_rg-button text-white/90">Bonf & Value©</div>
+              <div className={`${!changeColor ? "text-white" : "text-black/90"}`}>Bonf & Value©</div>
             </div>
 
             <Link
@@ -118,52 +113,107 @@ export default function Header() {
                 alt="Logo TA Creatives &amp; Design"
                 width={200}
                 height={200}
-                className="w-auto invert"
+                className={`w-auto ${!changeColor ? "invert" : ""} `}
               />
             </Link>
 
-            <nav className="navbar-items hidden items-center gap-10 lg:flex">
-              <Link href="/" className="text_rg-button text-white/90 hover:text-white">
+            {
+              changeColor ? (
 
-                <DecryptedText text="Home" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
-              </Link>
-              <Link href="/services" className="text_rg-button text-white/90 hover:text-white">
-                <DecryptedText text="Services" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
-                
-              </Link>
-              <Link href="/blog" className="text_rg-button text-white/90 hover:text-white">
-                <DecryptedText text="Blog" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
-                
-              </Link>
-              <Link href="/contact" className="text_rg-button text-white/90 hover:text-white">
-                <DecryptedText text="Contact" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
-                
-              </Link>
-            </nav>
 
-            <div className="navbar-wrapper-40 flex items-center gap-8">
-              <Link
-                href="/contact"
-                className="contact-button hidden items-center gap-3 lg:inline-flex"
-                onClick={closeMenu}
-              >
-                <div className="text_rg-button text-white/90 hover:text-white">
-                <DecryptedText text="Let's Bond" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
-                  
+                <nav className="navbar-items hidden items-center gap-10 lg:flex">
+                  <Link href="/" className="text_rg-button text-black/90 hover:text-black">
+
+                    <DecryptedText text="Home" className="text-black " useOriginalCharsOnly animateOn="hover" parentClassName="text-black cursor-pointer" speed={50} />
+                  </Link>
+                  <Link href="/services" className="text_rg-button text-black/90 hover:text-black">
+                    <DecryptedText text="Services" className="text-black " useOriginalCharsOnly animateOn="hover" parentClassName="text-black cursor-pointer" speed={50} />
+
+                  </Link>
+                  <Link href="/blog" className="text_rg-button text-black/90 hover:text-black">
+                    <DecryptedText text="Blog" className="text-black " useOriginalCharsOnly animateOn="hover" parentClassName="text-black cursor-pointer" speed={50} />
+
+                  </Link>
+                  <Link href="/contact" className="text_rg-button text-black/90 hover:text-black">
+                    <DecryptedText text="Contact" className="text-black " useOriginalCharsOnly animateOn="hover" parentClassName="text-black cursor-pointer" speed={50} />
+
+                  </Link>
+                </nav>
+              ) : (
+                <nav className="navbar-items hidden items-center gap-10 lg:flex">
+                  <Link href="/" className="text_rg-button text-white/90 hover:text-white">
+
+                    <DecryptedText text="Home" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
+                  </Link>
+                  <Link href="/services" className="text_rg-button text-white/90 hover:text-white">
+                    <DecryptedText text="Services" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
+
+                  </Link>
+                  <Link href="/blog" className="text_rg-button text-white/90 hover:text-white">
+                    <DecryptedText text="Blog" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
+
+                  </Link>
+                  <Link href="/contact" className="text_rg-button text-white/90 hover:text-white">
+                    <DecryptedText text="Contact" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
+
+                  </Link>
+                </nav>
+              )
+            }
+
+            {
+              changeColor ? (
+                <div className="navbar-wrapper-40 flex items-center gap-8">
+                  <Link
+                    href="/contact"
+                    className="contact-button hidden items-center gap-3 lg:inline-flex"
+                    onClick={closeMenu}
+                  >
+                    <div className="text-black/90 hover:text-black">
+                      <DecryptedText text="Let's Bond" className="text-black " useOriginalCharsOnly animateOn="hover" parentClassName="text-black cursor-pointer" speed={50} />
+
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-black/90" />
+                  </Link>
+
+                  <button
+                    type="button"
+                    className="cursor-pointer text-black/90 hover:text-black"
+                    aria-expanded={menuOpen}
+                    aria-controls={navId}
+                    onClick={toggleMenu}
+                  >
+                    <DecryptedText text="menu" className="text-black " useOriginalCharsOnly animateOn="hover" parentClassName="text-black cursor-pointer" speed={50} />
+                  </button>
                 </div>
-                <ArrowRight className="h-4 w-4 text-white/90" />
-              </Link>
+              ) : (
+                <div className="navbar-wrapper-40 flex items-center gap-8">
+                  <Link
+                    href="/contact"
+                    className="contact-button hidden items-center gap-3 lg:inline-flex"
+                    onClick={closeMenu}
+                  >
+                    <div className="text-white/90 hover:text-white">
+                      <DecryptedText text="Let's Bond" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
 
-              <button
-                type="button"
-                className="cursor-pointer text-white/90 hover:text-white"
-                aria-expanded={menuOpen}
-                aria-controls={navId}
-                onClick={toggleMenu}
-              >
-               <DecryptedText text="menu" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
-              </button>
-            </div>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-white/90" />
+                  </Link>
+
+                  <button
+                    type="button"
+                    className="cursor-pointer text-white/90 hover:text-white"
+                    aria-expanded={menuOpen}
+                    aria-controls={navId}
+                    onClick={toggleMenu}
+                  >
+                    <DecryptedText text="menu" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
+                  </button>
+                </div>
+
+              )
+            }
+
           </div>
         </div>
       </header>
@@ -270,7 +320,7 @@ export default function Header() {
                     onClick={closeMenu}
                     className="absolute right-0 top-0 inline-flex cursor-pointer items-center gap-2 text-white/90 hover:text-white"
                   >
-                     <DecryptedText text="close" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
+                    <DecryptedText text="close" className="text-white " useOriginalCharsOnly animateOn="hover" parentClassName="text-white cursor-pointer" speed={50} />
                   </button>
                 </div>
 

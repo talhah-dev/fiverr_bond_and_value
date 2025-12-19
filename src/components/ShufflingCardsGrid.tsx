@@ -28,14 +28,27 @@ function swap<T>(arr: T[], i: number, j: number) {
   return next;
 }
 
+const items = [
+  { id: "image1", type: "image", img: "/company/img1.webp" },
+  { id: "image2", type: "image", img: "/company/img2.webp" },
+  { id: "image3", type: "image", img: "/company/img3.webp" },
+  { id: "image4", type: "image", img: "/company/img4.webp" },
+  { id: "image5", type: "image", img: "/company/img5.webp" },
+  { id: "image6", type: "image", img: "/company/img6.webp" },
+  { id: "image7", type: "image", img: "/company/img7.webp" },
+  { id: "image8", type: "image", img: "/company/img8.webp" },
+  { id: "image9", type: "image", img: "/company/img9.webp" },
+  { id: "image10", type: "image", img: "/company/img10.webp" },
+  { id: "image11", type: "image", img: "/company/img11.webp" },
+  { id: "image12", type: "image", img: "/company/img12.webp" }
+] satisfies CardItem[];
+
 export default function ShufflingCardsGrid({
-  items,
   intervalMs = 2200,
   movesPerTick = 3,
   animDuration = 1.2,
   className = "",
 }: {
-  items: CardItem[];
   intervalMs?: number;
   movesPerTick?: number;
   animDuration?: number;

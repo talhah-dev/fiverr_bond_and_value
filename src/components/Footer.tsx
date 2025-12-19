@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Instagram, Facebook, Linkedin } from "lucide-react";
 import TicketButton from "@/components/TicketButton";
-
-import { motion } from "framer-motion";
 import { ParallaxImage } from "./ParallaxImage";
 import SplitText from "./SplitText";
 
@@ -14,32 +12,34 @@ type InstaItem = {
     label: string;
 };
 
-export default function Footer({
-    instaItems,
-}: {
-    instaItems: InstaItem[];
-}) {
+const instaItems = [
+    { src: "/img3.png", label: "Editorial" },
+    { src: "/img10.jpg", label: "Workspace" },
+    { src: "/img5.jpg", label: "Business" },
+    { src: "/img6.jpg", label: "Strategy" },
+    { src: "/img7.jpg", label: "Branding" },
+    { src: "/img8.jpg", label: "Analytics" },
+];
+
+
+export default function Footer() {
     const handleAnimationComplete = () => {
-        console.log('All letters have animated!');
     };
     return (
         <footer className="relative bg-[#fef2e1] text-[#4a5246] overflow-hidden">
             <div className="mx-auto max-w-[1450px] px-4 md:px-6 lg:px-14 pt-20 pb-10 md:pb-44">
-                {/* TOP CONTACT SECTION */}
                 <div className="grid grid-cols-1  lg:grid-cols-2 md:gap-14 gap-8">
                     <h2 className="">
                         <SplitText
-                            text="PLAN EEN KENNISMAKING
-                        VOOR JE EIGEN
-                        INTERIEUR"
-                            className="font-[PPPangaia] uppercase  leading-tight text-[clamp(2rem,5.5vw,3rem)] max-w-xl"
+                            text="plan an introductory meeting for your own interior"
+                            className="font-[PPPangaia] uppercase  !text-start leading-tight text-[clamp(2rem,5.5vw,3rem)] max-w-xl"
                             delay={150}
                             duration={2}
                             splitType="lines"
                             from={{ opacity: 0, y: 100 }}
                             onLetterAnimationComplete={handleAnimationComplete}
                         />
-                        
+
                     </h2>
 
                     <form className="space-y-2">
@@ -49,7 +49,7 @@ export default function Footer({
                                     htmlFor="email"
                                     className="text-sm text-[#4a5246]/90"
                                 >
-                                    Email adres
+                                    Email Address
                                 </label>
                                 <input
                                     id="email"
@@ -64,7 +64,7 @@ export default function Footer({
                                     htmlFor="phone"
                                     className="text-sm text-[#4a5246]/90"
                                 >
-                                    Telefoon nummer
+                                    Phone
                                 </label>
                                 <input
                                     id="phone"
@@ -80,7 +80,7 @@ export default function Footer({
                                 htmlFor="message"
                                 className="text-sm text-[#4a5246]/90"
                             >
-                                Bericht
+                                Message
                             </label>
                             <textarea
                                 id="message"
@@ -91,33 +91,40 @@ export default function Footer({
                         </div>
 
                         <p className="text-sm text-[#4a5246]/90 mb-5">
-                            Geef uw informatie op en ik bel u zo snel mogelijk op!
+                            By clicking Let's Bond, you agree to our Terms and Conditions and Privacy Policy
                         </p>
 
-                        <TicketButton href="/contact" label="Verzenden" />
+                        <TicketButton href="/contact" label="Let's Bond" />
                     </form>
 
 
                 </div>
 
-                {/* INSTAGRAM HIGHLIGHTS */}
                 <div className="md:mt-20 mt-16 ">
-                    <div className="mb-4  flex items-center justify-between">
+                    <div className="mb-4 flex items-center justify-between">
                         <div className="text-sm tracking-wide text-[#4a5346]">
                             Instagram Highlights
                         </div>
+
                         <div className="flex md:gap-4 gap-2">
-                            {[Instagram, Facebook, Linkedin].map((Icon, i) => (
-                                <div
-                                    key={i}
+                            {[
+                                { href: "https://www.instagram.com/bondandvale", Icon: Instagram, label: "Instagram" },
+                                { href: "https://www.facebook.com/share/1BS1H9f9mn/?mibextid=wwXIfr", Icon: Facebook, label: "Facebook" },
+                                { href: "https://www.linkedin.com/company/bond-vale", Icon: Linkedin, label: "LinkedIn" },
+                            ].map(({ href, Icon, label }) => (
+                                <Link
+                                    key={label}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={label}
                                     className="md:h-11 h-10 w-10 md:w-11 flex items-center justify-center rounded-full border border-black/30 text-[#4a5246]/70 hover:text-[#4a5246]"
                                 >
                                     <Icon size={18} />
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>
-
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 md:gap-4 gap-2">
                         {instaItems.map((item, i) => (
                             <div
@@ -135,7 +142,7 @@ export default function Footer({
                                     height={500}
                                     src={item.src}
                                     alt={item.label}
-                                    className="object-cover md:hidden "
+                                    className="object-cover h-full md:hidden "
                                 />
 
                                 <div className="absolute inset-0 flex items-end p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -149,20 +156,20 @@ export default function Footer({
                 </div>
 
                 <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6 items-center text-sm text-[#4a5346]">
-                    <div>Hellendoorn</div>
+                    <p className="md:block hidden">Portfolio</p>
 
-                    <div className="flex justify-center gap-6">
+                    <div className="flex md:justify-center justify-between gap-6">
                         <Link href="/algemene-voorwaarden" className="underline">
-                            Algemene Voorwaarden
+                            Terms and Conditions
                         </Link>
                         <Link href="/privacy-beleid" className="underline">
-                            Privacy Beleid
+                            Privacy Policy
                         </Link>
                     </div>
 
-                    <div className="flex justify-end gap-6">
-                        <span>© 2025 TA Design. All rights reserved</span>
-                        <span className="underline">Website by Paramor</span>
+                    <div className="flex justify-end md:flex-row flex-col text-center md:text-start gap-6">
+                        <span>© 2025 Bond & Value. All rights reserved</span>
+                        <span className="underline md:block hidden">Website by Quzex</span>
                     </div>
                 </div>
 

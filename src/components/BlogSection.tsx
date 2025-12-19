@@ -33,7 +33,6 @@ export default function BlogSection({
     return (
         <section className="bg-[#e6d7c4] text-[#485044]">
             <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-14 py-12 lg:py-16">
-                {/* Title */}
                 <h2 className="" >
                     <SplitText
                         text={title}
@@ -46,12 +45,9 @@ export default function BlogSection({
                     />
                 </h2>
 
-                {/* Divider */}
                 <div className="mt-6 h-px w-full bg-[#485044]/40" />
 
-                {/* Content */}
                 <div className="mt-10 grid grid-cols-1 lg:grid-cols-[0.9fr_1.6fr] gap-10 lg:gap-16">
-                    {/* Left intro */}
                     <div className="flex md:pt-7">
                         <p data-aos="fade-up"
                             className="max-w-md text-[#485044]/70 ">
@@ -59,7 +55,6 @@ export default function BlogSection({
                         </p>
                     </div>
 
-                    {/* Right list */}
                     <div className="flex flex-col">
                         <div className="divide-y divide-[#485044]/25 border-t border-[#485044]/0">
                             {items.map((item) => (
@@ -88,7 +83,6 @@ export default function BlogSection({
                             ))}
                         </div>
 
-                        {/* Button aligned to bottom-right */}
                         <div className="mt-8 flex justify-start lg:justify-end">
                             <TicketButton
                                 href={buttonHref}
