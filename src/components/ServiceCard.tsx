@@ -46,7 +46,7 @@ export default function ServiceCard({
 
     return (
         <Link
-            href={href}
+            href={`/services/${href}`}
             onMouseEnter={onEnter}
             onMouseLeave={onLeave}
             onFocus={onEnter}

@@ -181,6 +181,7 @@ export default function HomePage() {
               videoSrc: "/services/PublicRelations.mp4",
               tag: "Service",
               description: "Media outreach & brand positioning.",
+              href: "/public-relations"
             },
             {
               title: "Brand Consultancy",
@@ -188,6 +189,7 @@ export default function HomePage() {
               videoSrc: "/services/BrandConsultancy.mp4",
               tag: "Service",
               description: "Identity, strategy & messaging.",
+              href: "/brand-consultancy"
             },
             {
               title: "Reputation Management",
@@ -195,6 +197,7 @@ export default function HomePage() {
               videoSrc: "/services/ReputationManagement.mp4",
               tag: "Service",
               description: "Protect and strengthen trust.",
+              href: "/reputation-management"
             },
             {
               title: "Website Development",
@@ -202,6 +205,7 @@ export default function HomePage() {
               videoSrc: "/services/WebsiteDevelopment.mp4",
               tag: "Service",
               description: "Modern, fast conversion websites.",
+              href: "/website-development"
             },
             {
               title: "Digital Marketing",
@@ -209,6 +213,7 @@ export default function HomePage() {
               videoSrc: "/services/DigitalMarketing.mp4",
               tag: "Service",
               description: "Performance + creative campaigns.",
+              href: "/digital-marketing"
             },
             {
               title: "Investor Relations",
@@ -216,15 +221,16 @@ export default function HomePage() {
               videoSrc: "/services/InvestorRelations.mp4",
               tag: "Service",
               description: "Clear communication for investors.",
+              href: "/investor-relations"
             },
           ]}
         />
 
 
         <ExpandingHero imageSrc="/img2.jpg" quote='"AN INTERIOR
-WITH UNITY
-AND PEACE"
-        ' />
+          WITH UNITY
+          AND PEACE"
+                  ' />
 
         <div className="overflow-x-hidden">
           <TestimonialsSlider />

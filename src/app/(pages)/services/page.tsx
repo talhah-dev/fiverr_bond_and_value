@@ -20,6 +20,7 @@ export default function Services() {
                             videoSrc: "/services/PublicRelations.mp4",
                             tag: "Service",
                             description: "Media outreach & brand positioning.",
+                            href:"/public-relations"
                         },
                         {
                             title: "Brand Consultancy",
@@ -27,6 +28,7 @@ export default function Services() {
                             videoSrc: "/services/BrandConsultancy.mp4",
                             tag: "Service",
                             description: "Identity, strategy & messaging.",
+                            href:"/brand-consultancy"
                         },
                         {
                             title: "Reputation Management",
@@ -34,6 +36,7 @@ export default function Services() {
                             videoSrc: "/services/ReputationManagement.mp4",
                             tag: "Service",
                             description: "Protect and strengthen trust.",
+                            href:"/reputation-management"
                         },
                         {
                             title: "Website Development",
@@ -41,6 +44,7 @@ export default function Services() {
                             videoSrc: "/services/WebsiteDevelopment.mp4",
                             tag: "Service",
                             description: "Modern, fast conversion websites.",
+                            href:"/website-development"
                         },
                         {
                             title: "Digital Marketing",
@@ -48,6 +52,7 @@ export default function Services() {
                             videoSrc: "/services/DigitalMarketing.mp4",
                             tag: "Service",
                             description: "Performance + creative campaigns.",
+                            href:"/digital-marketing"
                         },
                         {
                             title: "Investor Relations",
@@ -55,6 +60,7 @@ export default function Services() {
                             videoSrc: "/services/InvestorRelations.mp4",
                             tag: "Service",
                             description: "Clear communication for investors.",
+                            href:"/investor-relations"
                         },
                     ]}
                 />
