@@ -1,25 +1,72 @@
 "use client";
-import Wrapper from '@/app/Wrapper';
-import Header from '@/components/Header'
-import TabLoader from '@/components/Loader';
-import SplitText from '@/components/SplitText'
-import TicketButton from '@/components/TicketButton'
-import Link from 'next/link';
+
+import React, { useState } from "react";
+import Wrapper from "@/app/Wrapper";
+import Header from "@/components/Header";
+import SplitText from "@/components/SplitText";
+import TicketButton from "@/components/TicketButton";
+import Link from "next/link";
+import axios from "axios";
+import { toast } from "sonner";
 
 export default function Contact() {
-    const handleAnimationComplete = () => {
+    const handleAnimationComplete = () => { };
+
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async () => {
+        if (loading) return;
+
+        // Basic frontend validation
+        if (!email || !message) {
+            toast("Email and message are required.");
+            return;
+        }
+
+        setLoading(true);
+        try {
+            // If your route is: app/api/inquiries/route.ts => /api/inquiries
+            const res = await axios.post("/api/inquiries", {
+                email,
+                phone,
+                message,
+                source: "contact-page", // optional
+                status: "new", // optional
+            });
+
+            if (res.data?.success) {
+                toast(res.data?.message || "Submitted successfully!");
+
+                // reset form
+                setEmail("");
+                setPhone("");
+                setMessage("");
+            } else {
+                toast(res.data?.message || "Submission failed.");
+            }
+        } catch (err: any) {
+            const apiMsg = err?.response?.data?.message;
+            toast(apiMsg || err?.message || "Something went wrong.");
+        } finally {
+            setLoading(false);
+        }
     };
+
     return (
         <Wrapper>
-            {/* <TabLoader direction="top" speed={1.4} /> */}
-            <div className='bg-[#e0d1be] min-h-screen'>
+            <div className="bg-[#e0d1be] min-h-screen">
                 <Header />
+
                 <div className="mx-auto max-w-[1450px] px-4 md:px-6 lg:px-14 pt-20 pb-10 md:pb-44">
-                    <div className="grid grid-cols-1  lg:grid-cols-2 md:gap-14 gap-8">
-                        <div className="">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-14 gap-8">
+                        <div>
                             <p className="text-sm text-[#4a5246]/90 mb-5">
                                 Send us an email, or call us.
                             </p>
+
                             <Link href={"mailto:info@bondandvale.com"}>
                                 <SplitText
                                     text="info@bondandvale.com"
@@ -30,39 +77,39 @@ export default function Contact() {
                                     from={{ opacity: 0, y: 100 }}
                                     onLetterAnimationComplete={handleAnimationComplete}
                                 />
-
                             </Link>
                         </div>
-                        <form className="space-y-2">
+
+                        {/* NO FORM — Enter will not submit */}
+                        <div className="space-y-2">
                             <div className="grid grid-cols-2 md:gap-4 gap-2">
                                 <div className="space-y-2">
-                                    <label
-                                        htmlFor="email"
-                                        className="text-sm text-[#4a5246]/90"
-                                    >
+                                    <label htmlFor="email" className="text-sm text-[#4a5246]/90">
                                         Email Address
-
                                     </label>
                                     <input
                                         id="email"
                                         name="email"
                                         type="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                         className="w-full bg-[#f4ebd0]/70 mt-1 px-4 py-2.5 outline-none"
+                                        disabled={loading}
                                     />
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label
-                                        htmlFor="phone"
-                                        className="text-sm text-[#4a5246]/90"
-                                    >
+                                    <label htmlFor="phone" className="text-sm text-[#4a5246]/90">
                                         Phone
                                     </label>
                                     <input
                                         id="phone"
                                         name="phone"
                                         type="tel"
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
                                         className="w-full bg-[#f4ebd0]/70 mt-1 px-4 py-2.5 outline-none"
+                                        disabled={loading}
                                     />
                                 </div>
                             </div>
@@ -78,28 +125,32 @@ export default function Contact() {
                                     id="message"
                                     name="message"
                                     rows={1}
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
                                     className="w-full bg-[#f4ebd0]/70 mt-1 px-4 py-2.5 outline-none resize-none"
+                                    disabled={loading}
                                 />
                             </div>
 
                             <p className="text-sm text-[#4a5246]/90 mb-5">
-                                By clicking Let's Bond, you agree to our Terms and Conditions and Privacy Policy
+                                By clicking Let's Bond, you agree to our Terms and Conditions and
+                                Privacy Policy
                             </p>
 
-                            <TicketButton href="/contact" label="Let's Bond" />
-                        </form>
-
-
+                            {/* Click only */}
+                            <div onClick={handleSubmit} className={loading ? "opacity-70 pointer-events-none" : ""}>
+                                <TicketButton href="#" label={loading ? "Submitting..." : "Let's Bond"} />
+                            </div>
+                        </div>
                     </div>
-
 
                     <div className="mt-40">
-                        <p className='text-sm opacity-50 max-w-xs'>PLAN AN INTRODUCTORY CALL WITH
-                            ONE OF OUR CONSULTANTS</p>
+                        <p className="text-sm opacity-50 max-w-xs">
+                            PLAN AN INTRODUCTORY CALL WITH ONE OF OUR CONSULTANTS
+                        </p>
                     </div>
                 </div>
-
             </div>
         </Wrapper>
-    )
+    );
 }
