@@ -23,10 +23,10 @@ type BlogDoc = {
 };
 
 export default function BlogSection({
-    title = "BLOGS & NIEUWS",
+    title = "BLOGS & NEWS",
     intro,
     buttonHref = "/blog",
-    buttonLabel = "Alle blogs",
+    buttonLabel = "All blogs",
 }: {
     title?: string;
     intro: string;

@@ -176,7 +176,7 @@ export default function ServiceDetailPage({
                                 <video
                                     className="h-full w-full object-cover"
                                     src={heroMedia.video}
-                                    poster={`/${heroMedia.videoPoster}`}
+                                    // poster={`/${heroMedia.videoPoster}`}
                                     autoPlay
                                     muted
                                     loop
