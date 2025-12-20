@@ -170,9 +170,7 @@ export default function HomePage() {
           leftImage="/img.webp"
           rightTopImage="/img3.png"
           title={"Strategic PR & Marketing for Unmatched Brand Growth"}
-          body="Een interieurontwerp komt pas echt tot leven wanneer ideeën worden omgezet in een echte ruimte. In mijn projecten zie je hoe creativiteit en aandacht voor detail samenkomen om unieke interieurs te creëren die perfect passen bij de wensen van mijn klanten. Elk project heeft zijn eigen verhaal, van gezellige woonruimtes tot praktische werkplekken. Met oog voor kleur en materiaal zorg ik ervoor dat alles mooi in balans is en goed functioneert. Laat je inspireren door eerdere ontwerpen en ontdek wat er mogelijk is voor jouw interieur!
-
-"
+          body="We’re not the kind of firm that just accepts change as a constant. We embrace it. We shape the narrative and give you full control And now we’ve evolved our identity to show that loud and clear. It’s more than a new article or rebrand. It’s our statement of who we are and what we value. Our commitment to move forward, always, for and with our clients. We are Bond and Vale. Redefining Influence"
           buttonHref="/projecten"
           buttonLabel="PROJECTS"
         />
