@@ -175,7 +175,7 @@ export default function ServiceDetailPage({
                             <div className="relative aspect-[16/10] h-full w-full">
                                 <video
                                     className="h-full w-full object-cover"
-                                    src={heroMedia.video}
+                                    src={"https://res.cloudinary.com/dixhnqcby/video/upload/v1766196639/Video3_v4rapo.mp4"}
                                     poster={`/${heroMedia.videoPoster}`}
                                     autoPlay
                                     muted
