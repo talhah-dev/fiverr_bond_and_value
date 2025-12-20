@@ -182,7 +182,7 @@ export default function ServiceDetailPage({
                                     preload="metadata"
                                     poster={`/${heroMedia.videoPoster}`}
                                 >
-                                    <source src="/services/video5.mp4" type="video/mp4" />
+                                    <source src="https://res.cloudinary.com/dixhnqcby/video/upload/v1765973067/videobg_d0ta23.mp4" type="video/mp4" />
                                     {/* Fallback text */}
                                     Your browser does not support the video tag.
                                 </video>
