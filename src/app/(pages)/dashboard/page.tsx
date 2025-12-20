@@ -11,10 +11,12 @@ import {
     Trash2,
     MessageSquare,
     Book,
+    LogOut,
 } from "lucide-react";
 import Header from "@/components/Header";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { authClient } from "@/lib/auth-client";
 
 type InquiryDoc = {
     _id: string;
@@ -36,6 +38,7 @@ export default function AdminDashboard() {
     const [blogs, setBlogs] = useState<BlogDoc[]>([]);
     const [loading, setLoading] = useState(true);
     const [errMsg, setErrMsg] = useState("");
+    const [loggingOut, setLoggingOut] = useState(false);
 
     const publishedCount = useMemo(
         () => blogs.filter((b) => b.status === "published").length,
@@ -51,7 +54,7 @@ export default function AdminDashboard() {
         try {
             return new Date(iso).toISOString().slice(0, 10);
         } catch {
-            return iso;
+            return String(iso);
         }
     };
 
@@ -60,14 +63,12 @@ export default function AdminDashboard() {
         setErrMsg("");
 
         try {
-            // 1) inquiries count
             const inquiriesRes = await axios.get("/api/inquiries");
             if (inquiriesRes.data?.success) {
                 const list: InquiryDoc[] = inquiriesRes.data.inquiries || [];
                 setInquiriesCount(list.length);
             }
 
-            // 2) blogs list (all statuses)
             const blogsRes = await axios.get("/api/blog?status=all&limit=20&page=1");
             if (blogsRes.data?.success) {
                 setBlogs(blogsRes.data.posts || []);
@@ -75,7 +76,9 @@ export default function AdminDashboard() {
                 setErrMsg(blogsRes.data?.message || "Failed to load blog posts");
             }
         } catch (e: any) {
-            setErrMsg(e?.response?.data?.message || e?.message || "Failed to load dashboard");
+            setErrMsg(
+                e?.response?.data?.message || e?.message || "Failed to load dashboard"
+            );
         } finally {
             setLoading(false);
         }
@@ -90,7 +93,6 @@ export default function AdminDashboard() {
     };
 
     const handleEdit = (slug: string) => {
-        // ✅ change this route if your edit page is different
         router.push(`/dashboard/edit-post/${slug}`);
     };
 
@@ -103,7 +105,32 @@ export default function AdminDashboard() {
             setBlogs((prev) => prev.filter((b) => b.slug !== slug));
             toast("Blog deleted successfully.");
         } catch (e: any) {
-            toast(e?.response?.data?.message || e?.message || "Failed to delete blog.");
+            toast(
+                e?.response?.data?.message || e?.message || "Failed to delete blog."
+            );
+        }
+    };
+
+    // ✅ LOGOUT
+    const handleLogout = async () => {
+        if (loggingOut) return;
+        setLoggingOut(true);
+
+        try {
+            // Better Auth logout
+            const { error } = await authClient.signOut();
+
+            if (error) {
+                toast(error.message || "Logout failed");
+                return;
+            }
+
+            toast("Logged out successfully.");
+            router.replace("/login");
+        } catch (e: any) {
+            toast(e?.message || "Logout failed");
+        } finally {
+            setLoggingOut(false);
         }
     };
 
@@ -124,7 +151,7 @@ export default function AdminDashboard() {
                     </div>
 
                     {/* Actions */}
-                    <div className="flex gap-3">
+                    <div className="flex flex-wrap gap-3">
                         <Link
                             href="/dashboard/create-post"
                             className="inline-flex items-center gap-2 rounded-full border border-black/15 bg-[#3f4b3f] px-5 py-3 text-sm text-[#e6d7c4] hover:opacity-90 transition"
@@ -140,6 +167,16 @@ export default function AdminDashboard() {
                             <Book className="h-4 w-4" />
                             Form Submissions
                         </Link>
+
+                        {/* ✅ Logout */}
+                        <button
+                            onClick={handleLogout}
+                            disabled={loggingOut}
+                            className="inline-flex items-center gap-2 rounded-full bg-red-500 px-5 py-3 text-sm text-[#fff] hover:bg-red-600 cursor-pointer transition disabled:opacity-60"
+                        >
+                            <LogOut className="h-4 w-4" />
+                            {loggingOut ? "Logging out..." : "Logout"}
+                        </button>
                     </div>
                 </div>
 
@@ -194,6 +231,7 @@ export default function AdminDashboard() {
                         <h2 className="font-serif text-2xl">Blog Posts</h2>
                     </div>
 
+                    {/* ✅ Responsive wrapper */}
                     <div className="mt-6 overflow-x-auto">
                         {loading && (
                             <div className="py-6 text-sm text-[#23352d]/70">
@@ -206,9 +244,9 @@ export default function AdminDashboard() {
                         )}
 
                         {!loading && !errMsg && (
-                            <table className="w-full border-collapse">
+                            <table className="w-full min-w-[900px] border-collapse">
                                 <thead>
-                                    <tr className="border-b border-black/10 text-left text-xs uppercase tracking-[0.22em] text-[#23352d]/60">
+                                    <tr className="border-b border-black/10 text-left text-xs uppercase tracking-[0.22em] text-[#23352d]/60 whitespace-nowrap">
                                         <th className="pb-4">Title</th>
                                         <th className="pb-4">Status</th>
                                         <th className="pb-4">Date</th>
@@ -219,7 +257,10 @@ export default function AdminDashboard() {
                                 <tbody>
                                     {blogs.length === 0 ? (
                                         <tr className="border-b border-black/5">
-                                            <td className="py-6 text-sm text-[#23352d]/70" colSpan={4}>
+                                            <td
+                                                className="py-6 text-sm text-[#23352d]/70"
+                                                colSpan={4}
+                                            >
                                                 No blog posts yet.
                                             </td>
                                         </tr>
@@ -237,17 +278,23 @@ export default function AdminDashboard() {
 
                                             return (
                                                 <tr key={blog._id} className="border-b border-black/5">
-                                                    <td className="py-4 font-medium">{blog.title}</td>
+                                                    <td className="py-4 font-medium whitespace-nowrap">
+                                                        {blog.title}
+                                                    </td>
 
-                                                    <td className="py-4">
-                                                        <span className={`rounded-full px-3 py-1 text-xs ${badgeClass}`}>
+                                                    <td className="py-4 whitespace-nowrap">
+                                                        <span
+                                                            className={`rounded-full px-3 py-1 text-xs ${badgeClass}`}
+                                                        >
                                                             {badgeLabel}
                                                         </span>
                                                     </td>
 
-                                                    <td className="py-4 text-[#23352d]/70">{dateValue}</td>
+                                                    <td className="py-4 text-[#23352d]/70 whitespace-nowrap">
+                                                        {dateValue}
+                                                    </td>
 
-                                                    <td className="py-4">
+                                                    <td className="py-4 whitespace-nowrap">
                                                         <div className="flex justify-end gap-3">
                                                             <button
                                                                 onClick={() => handleView(blog.slug)}
