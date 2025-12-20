@@ -100,11 +100,11 @@ export default function Header() {
       <header className="navbar relative z-[999] w-full">
         <div className="w-full">
           <div className="mx-auto flex h-24 w-full max-w-[1400px] items-center justify-between px-6">
-            <div className="copyright-text lg:flex hidden items-center">
+            {/* <div className="copyright-text lg:flex hidden items-center">
               <div className={`${!changeColor ? "text-white" : "text-black/90"}`}>
                 Bond & Vale©
               </div>
-            </div>
+            </div> */}
 
             <Link
               href="/"
@@ -113,11 +113,18 @@ export default function Header() {
               onClick={closeMenu}
             >
               <Image
+                src="/whitelogo.svg"
+                alt="Logo TA Creatives &amp; Design"
+                width={200}
+                height={200}
+                className={`w-auto h-14 md:block hidden`}
+              />
+              <Image
                 src="/logoicon.webp"
                 alt="Logo TA Creatives &amp; Design"
                 width={200}
                 height={200}
-                className={`w-auto ${!changeColor ? "invert" : ""} `}
+                className={`w-auto md:hidden ${!changeColor ? "invert" : ""} `}
               />
             </Link>
 

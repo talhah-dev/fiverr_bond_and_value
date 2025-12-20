@@ -6,20 +6,21 @@ import { AnimatePresence, motion } from "framer-motion";
 
 type TabLoaderProps = {
     direction?: "top" | "bottom";
-    speed?: number; // seconds
-    delay?: number; // optional, seconds before it starts leaving
-    enter?: boolean; // NEW: if true, loader slides in from top/bottom
+    speed?: number;
+    delay?: number;
+    enter?: boolean;
+    minDuration?: number;
 };
 
 export default function TabLoader({
     direction = "top",
-    speed = 0.9,
-    delay = 0.3,
+    speed = 1.4,
+    delay = 0.6,
     enter = false,
+    minDuration = 1800,
 }: TabLoaderProps) {
     const [visible, setVisible] = useState(true);
 
-    // lock scroll while loader visible
     useEffect(() => {
         if (!visible) return;
         const prev = document.body.style.overflow;
@@ -29,11 +30,11 @@ export default function TabLoader({
         };
     }, [visible]);
 
-    // auto hide
     useEffect(() => {
-        const t = window.setTimeout(() => setVisible(false), (delay + 0.05) * 2000);
+        const timeout = Math.max(minDuration, (delay + speed) * 1000);
+        const t = window.setTimeout(() => setVisible(false), timeout);
         return () => window.clearTimeout(t);
-    }, [delay]);
+    }, [delay, speed, minDuration]);
 
     const fromY = direction === "top" ? "-100%" : "100%";
     const exitY = direction === "top" ? "-100%" : "100%";
@@ -42,25 +43,25 @@ export default function TabLoader({
         <AnimatePresence>
             {visible && (
                 <motion.div
-                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0e221c]"
+                    className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0e221c] overflow-hidden"
                     aria-label="Loading"
                     role="status"
-                    initial={{ y: enter ? fromY : 0 }}   // 👈 NEW
+                    initial={{ y: enter ? fromY : 0 }}
                     animate={{
                         y: 0,
                         transition: enter
                             ? { duration: speed * 0.6, ease: [0.22, 1, 0.36, 1] }
                             : undefined,
-                    }}                                  // 👈 NEW
+                    }}
                     exit={{
                         y: exitY,
                         transition: { duration: speed, ease: [0.22, 1, 0.36, 1] },
                     }}
                 >
                     <Image
-                        data-aos="zoom-out"
                         src="/loaderlogo.svg"
-                        alt="Bond & Value"
+                        data-aos="zoom-out"
+                        alt="Bond & Vale"
                         width={420}
                         height={120}
                         priority

@@ -239,11 +239,19 @@ function HalfCutBrandText({ text = "Bond & Vale" }: { text?: string }) {
     return (
         <div className="pointer-events-none md:block hidden absolute bottom-0 left-0 w-full">
             {/* this is the “window” that only shows half */}
-            <div className="h-[10vw] sm:min-h-[80px] min-h-[20px] max-h-[140px] overflow-hidden">
+            <div className="h-[15vw] sm:min-h-[80px] min-h-[20px] xl:max-h-[200px] max-h-[180px] overflow-hidden">
                 <div
                     className="flex justify-center"
                 >
-                    <span
+                    <Image
+                        src="/bondandvale.svg"
+                        alt="Bond & Vale logo"
+                        width={2000}
+                        height={1200}
+                        className="w-full h-auto object-contain select-none"
+                        priority
+                    />
+                    {/* <span
                         className="
               whitespace-nowrap
               font-serif
@@ -254,8 +262,8 @@ function HalfCutBrandText({ text = "Bond & Vale" }: { text?: string }) {
               text-[16vw]
             "
                     >
-                       Bond & Vale    
-                    </span>
+                        Bond & Vale
+                    </span> */}
                 </div>
             </div>
         </div>

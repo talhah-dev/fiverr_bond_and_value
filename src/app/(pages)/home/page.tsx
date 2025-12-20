@@ -14,6 +14,7 @@ import FlowingMenuComp from '@/components/FlowingMenuComp';
 import TestimonialsSlider from '@/components/TestimonialsSlider';
 import Wrapper from '@/app/Wrapper';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function HomePage() {
   const handleAnimationComplete = () => {
@@ -33,7 +34,8 @@ export default function HomePage() {
     <Wrapper>
       <div className='bg-[#e0d1be] min-h-screen'>
 
-        <TabLoader direction="top" speed={1.4} />
+        <TabLoader direction="top" speed={1.4} minDuration={2000} />
+
 
 
         <div className="relative">
@@ -94,11 +96,20 @@ export default function HomePage() {
 
         <DoorRevealSection
           heightVh={240}
-          className="bg-[#e6d7c4]"
+          className=" bg-[#e6d7c4]"
           background={
-            <div className="h-full w-full bg-[#e6d7c4] flex items-center justify-center">
-              <div className="font-[PPPangaia] font-semibold text-[#0e221c] leading-none tracking-wide text-[clamp(25px,14vw,220px)]">
-                Bond & Vale
+            <div className="relative h-full w-full bg-[#e6d7c4]">
+              <div className="absolute inset-0 flex items-center justify-center px-6">
+                <div className="w-[min(1450px,85vw)]">
+                  <Image
+                    src="/bondandvale.svg"
+                    alt="Bond & Vale logo"
+                    width={2000}
+                    height={1200}
+                    className="w-full h-auto object-contain select-none"
+                    priority
+                  />
+                </div>
               </div>
             </div>
           }
@@ -136,7 +147,6 @@ export default function HomePage() {
             </p>
           </div>
         </DoorRevealSection>
-
 
         <section className="bg-[#e6d7c4] px-6 lg:px-14 py-16">
           <h2 className=" ">
