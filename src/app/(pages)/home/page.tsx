@@ -13,10 +13,21 @@ import TabLoader from '@/components/Loader';
 import FlowingMenuComp from '@/components/FlowingMenuComp';
 import TestimonialsSlider from '@/components/TestimonialsSlider';
 import Wrapper from '@/app/Wrapper';
+import { useEffect, useState } from 'react';
 
 export default function HomePage() {
   const handleAnimationComplete = () => {
   };
+
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Wrapper>
@@ -54,7 +65,7 @@ export default function HomePage() {
             <div className="relative z-[2] flex md:h-full w-full  flex-col ">
               {/* Center Title */}
               <div className="flex flex-1 items-start justify-center px-4 pb-20 md:pb-0 md:pt-32">
-                <h1 className="text-center font-[PPPangaia] uppercase leading-[0.95] tracking-wide text-[#e6d7c4] drop-shadow-[0_2px_20px_rgba(0,0,0,0.35)]">
+                <h1 className={`text-center font-[PPPangaia] uppercase leading-[0.95] transition-all duration-300 tracking-wide text-[#e6d7c4] drop-shadow-[0_2px_20px_rgba(0,0,0,0.35)] ${!isVisible ? 'opacity-0' : ''}`}>
                   <span className="block max-w-4xl leading-tight mx-auto text-center">
                     <SplitText
                       text="Pay On Success Communication that connects."
@@ -237,7 +248,7 @@ export default function HomePage() {
         </div>
 
 
-        <BlogSection intro="Ontdek de laatste trends, tips en inspiratie op het gebied van interieurontwerp en styling. Blijf op de hoogte van onze nieuwste projecten en inzichten."/>
+        <BlogSection intro="Ontdek de laatste trends, tips en inspiratie op het gebied van interieurontwerp en styling. Blijf op de hoogte van onze nieuwste projecten en inzichten." />
       </div >
     </Wrapper>
   )
