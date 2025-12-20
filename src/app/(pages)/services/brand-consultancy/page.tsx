@@ -175,14 +175,17 @@ export default function ServiceDetailPage({
                             <div className="relative aspect-[16/10] h-full w-full">
                                 <video
                                     className="h-full w-full object-cover"
-                                    src={heroMedia.video}
-                                    poster={`/${heroMedia.videoPoster}`}
                                     autoPlay
                                     muted
                                     loop
                                     playsInline
                                     preload="metadata"
-                                />
+                                    poster={`/${heroMedia.videoPoster}`}
+                                >
+                                    <source src={heroMedia.video} type="video/mp4" />
+                                    {/* Fallback text */}
+                                    Your browser does not support the video tag.
+                                </video>
                                 <div className="pointer-events-none absolute inset-0 bg-black/10" />
                             </div>
                         </div>
