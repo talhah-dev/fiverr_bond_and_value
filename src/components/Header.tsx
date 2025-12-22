@@ -109,24 +109,43 @@ export default function Header() {
             <Link
               href="/"
               aria-current="page"
-              className="ta-logo w-inline-block w--current flex items-center justify-center"
+              className="ta-logo w-inline-block md:flex hidden items-center justify-center"
               onClick={closeMenu}
             >
-              <Image
-                src="/whitelogo.svg"
-                alt="Logo TA Creatives &amp; Design"
-                width={200}
-                height={200}
-                className={`w-auto h-14 md:block hidden`}
-              />
-              <Image
+              {
+                !changeColor ? (
+                  <Image
+                    src="/ylogo.svg"
+                    alt="Logo TA Creatives &amp; Design"
+                    width={200}
+                    height={200}
+                    className={`w-auto h-10 md:block hidden `}
+                  />
+                ) : (
+                  <Image
+                    src="/door.svg"
+                    alt="Logo TA Creatives &amp; Design"
+                    width={200}
+                    height={200}
+                    className={`w-auto h-10 md:block hidden `}
+                  />
+                )
+              }
+              {/* <Image
                 src="/logoicon.webp"
                 alt="Logo TA Creatives &amp; Design"
                 width={200}
                 height={200}
-                className={`w-auto md:hidden ${!changeColor ? "invert" : ""} `}
-              />
+                className={`w-auto ${!changeColor ? "invert" : ""} `}
+              /> */}
             </Link>
+            <Image
+              src="/ylogoicon.svg"
+              alt="Logo TA Creatives &amp; Design"
+              width={200}
+              height={200}
+              className={`w-auto h-12`}
+            />
 
             {changeColor ? (
               <nav className="navbar-items hidden items-center gap-10 lg:flex">

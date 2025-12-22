@@ -60,7 +60,7 @@ export default function TabLoader({
                 >
                     <Image
                         src="/loaderlogo.svg"
-                        data-aos="zoom-out"
+                        data-aos="zoom-out" 
                         alt="Bond & Vale"
                         width={420}
                         height={120}

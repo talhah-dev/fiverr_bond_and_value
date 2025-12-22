@@ -2,10 +2,10 @@ import React from "react";
 import FlowingMenu from "./FlowingMenu";
 
 const demoItems = [
-    { link: "/services", text: "Build Trust Fast", image: "https://picsum.photos/600/400?random=3" },
-    { link: "/services", text: "Stories Convert", image: "https://picsum.photos/600/400?random=2" },
-    { link: "/contact", text: "Let’s Bond", image: "https://picsum.photos/600/400?random=4" },
-    { link: "/blog", text: "Ideas & Insights", image: "https://picsum.photos/600/400?random=5" },
+    { link: "/services", text: "Build Trust Fast", image: "/BuildTrust.jpg" },
+    { link: "/services", text: "Stories Convert", image: "/DataInsights.jpg" },
+    { link: "/contact", text: "Let’s Bond", image: "/LetBond.jpg" },
+    { link: "/blog", text: "Ideas & Insights", image: "/StoriesConvert.jpg" },
 ];
 
 

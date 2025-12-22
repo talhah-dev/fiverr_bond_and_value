@@ -102,7 +102,7 @@ export default function HomePage() {
               <div className="absolute inset-0 flex items-center justify-center px-6">
                 <div className="w-[min(1450px,85vw)]">
                   <Image
-                    src="/bondandvale.svg"
+                    src="/door.svg"
                     alt="Bond & Vale logo"
                     width={2000}
                     height={1200}
