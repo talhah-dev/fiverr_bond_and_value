@@ -246,9 +246,8 @@ export default function HomePage() {
         />
 
 
-        <ExpandingHero imageSrc="/img2.jpg" quote='"AN INTERIOR
-          WITH UNITY
-          AND PEACE"
+        <ExpandingHero imageSrc="/bg.png" quote='"We shape brands with clarity,
+strategy, and long-term value."
                   ' />
 
         <div className="overflow-x-hidden">
@@ -256,7 +255,7 @@ export default function HomePage() {
         </div>
 
 
-        <BlogSection intro="Ontdek de laatste trends, tips en inspiratie op het gebied van interieurontwerp en styling. Blijf op de hoogte van onze nieuwste projecten en inzichten." />
+        <BlogSection intro="Discover the latest trends, tips, and inspiration. Stay up-to-date on our latest projects and insights." />
       </div >
     </Wrapper>
   )
