@@ -50,7 +50,7 @@ export default function HomePage() {
           />
           <video
             className="absolute md:hidden inset-0 h-full w-full object-cover"
-            src="https://res.cloudinary.com/dixhnqcby/video/upload/v1766065204/Trailer_Mobile_Version_11-04_lkjlc4.mp4"
+            src="/mobile.mp4"
             autoPlay
             muted
             loop
