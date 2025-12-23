@@ -6,6 +6,7 @@ import axios from "axios";
 import Wrapper from "@/app/Wrapper";
 import Header from "@/components/Header";
 import DecryptedText from "@/components/DecryptedText";
+import TabLoader from "@/components/Loader";
 
 type BlogDoc = {
     _id: string;
@@ -59,6 +60,7 @@ export default function Blog() {
 
     return (
         <Wrapper>
+            <TabLoader direction="top" speed={1.4} minDuration={2000} />
             <section className="bg-[#eadcc9] text-[#0e221c]">
                 <Header />
 
@@ -70,10 +72,10 @@ export default function Blog() {
                         </div>
 
                         <p className="mt-6 leading-6 md:leading-7 text-[#0e221c]/60">
-                            Welcome to the Bond &amp; Vale blog! Here I share the latest interior
-                            design trends, clever styling tips, and practical advice for both the
-                            office and the home. Whether you're looking for creative ideas, helpful
-                            guides, or just a dose of inspiration, you'll find it here. Enjoy!
+                            The Bond &amp; Vale journal explores branding, public relations, and strategic
+                            communication through a thoughtful lens. Here we share insights, perspectives,
+                            and practical guidance on building strong narratives, shaping reputation, and
+                            creating long-term brand value in a changing landscape.
                         </p>
                     </div>
 

@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Wrapper from "@/app/Wrapper";
 import Header from "@/components/Header";
+import TabLoader from "@/components/Loader";
 
 type Props = {
     title?: string;
@@ -80,6 +81,7 @@ export default function ServiceDetailPage({
 
     return (
         <Wrapper>
+            <TabLoader direction="top" speed={1.4} minDuration={2000} />
 
             <main className="bg-[#e6d7c4] text-[#23352d]">
                 <Header />

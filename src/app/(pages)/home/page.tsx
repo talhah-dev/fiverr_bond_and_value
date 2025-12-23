@@ -100,7 +100,7 @@ export default function HomePage() {
           background={
             <div className="relative h-full w-full bg-[#e6d7c4]">
               <div className="absolute inset-0 flex items-center justify-center px-6">
-                <div className="w-[min(1450px,85vw)]">
+                <div className="w-[min(2000px,85vw)]">
                   <Image
                     src="/door.svg"
                     alt="Bond & Vale logo"
@@ -177,11 +177,11 @@ export default function HomePage() {
         {/* <ScrollTabsSection tabs={tabs} className="mt-0" /> */}
 
         <ProjectsFeatureSection
-          leftImage="/img.webp"
+          leftImage="/img16.png"
           rightTopImage="/img3.png"
           title={"Strategic PR & Marketing for Unmatched Brand Growth"}
           body="We’re not the kind of firm that just accepts change as a constant. We embrace it. We shape the narrative and give you full control And now we’ve evolved our identity to show that loud and clear. It’s more than a new article or rebrand. It’s our statement of who we are and what we value. Our commitment to move forward, always, for and with our clients. We are Bond and Vale. Redefining Influence"
-          buttonHref="/projecten"
+          buttonHref="/services"
           buttonLabel="PROJECTS"
         />
 

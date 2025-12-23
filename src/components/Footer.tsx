@@ -72,9 +72,9 @@ export default function Footer() {
         <footer className="relative bg-[#fef2e1] text-[#0e221c] overflow-hidden">
             <div className="mx-auto max-w-[1450px] px-4 md:px-6 lg:px-14 pt-20 pb-10 md:pb-44">
                 <div className="grid grid-cols-1  lg:grid-cols-2 md:gap-14 gap-8">
-                    <h2 className="">
+                    <Link className="" href={"/contact#calender"}>
                         <SplitText
-                            text="plan an introductory meeting for your own interior"
+                            text="Plan an introductory strategy call"
                             className="font-[PPPangaia] uppercase  !text-start leading-tight text-[clamp(2rem,5.5vw,3rem)] max-w-xl"
                             delay={150}
                             duration={2}
@@ -83,7 +83,7 @@ export default function Footer() {
                             onLetterAnimationComplete={handleAnimationComplete}
                         />
 
-                    </h2>
+                    </Link>
 
                     <div className="space-y-2">
                         <div className="grid grid-cols-2 md:gap-4 gap-2">
@@ -239,12 +239,12 @@ function HalfCutBrandText({ text = "Bond & Vale" }: { text?: string }) {
     return (
         <div className="pointer-events-none md:block hidden absolute bottom-0 left-0 w-full">
             {/* this is the “window” that only shows half */}
-            <div className="h-[15vw] sm:min-h-[80px] min-h-[20px] xl:max-h-[200px] max-h-[180px] overflow-hidden">
+            <div className="h-[9vw] sm:min-h-[80px] min-h-[20px] max-h-[180px] overflow-hidden">
                 <div
                     className="flex justify-center"
                 >
                     <Image
-                        src="/bondandvale.svg"
+                        src="/door.svg"
                         alt="Bond & Vale logo"
                         width={2000}
                         height={1200}

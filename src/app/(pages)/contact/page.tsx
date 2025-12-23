@@ -9,6 +9,7 @@ import Link from "next/link";
 import Script from "next/script";
 import axios from "axios";
 import { toast } from "sonner";
+import TabLoader from "@/components/Loader";
 
 export default function Contact() {
     const handleAnimationComplete = () => { };
@@ -59,6 +60,7 @@ export default function Contact() {
 
     return (
         <Wrapper>
+            <TabLoader direction="top" speed={1.4} minDuration={2000} />
             <div className="bg-[#e0d1be] min-h-screen">
                 <Header />
 
@@ -150,7 +152,7 @@ export default function Contact() {
                     </div>
 
                     {/* Calendly Section */}
-                    <div className="mt-24 md:mt-40">
+                    <div id="calender" className="mt-24 md:mt-40">
                         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
                             <div>
                                 <p className="text-sm opacity-50 max-w-xs tracking-wide">

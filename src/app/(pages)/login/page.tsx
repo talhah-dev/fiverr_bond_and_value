@@ -7,6 +7,7 @@ import Wrapper from "@/app/Wrapper";
 import Header from "@/components/Header";
 import { ArrowRight, Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
+import TabLoader from "@/components/Loader";
 
 export default function AdminLoginPage() {
     const router = useRouter();
@@ -81,6 +82,7 @@ export default function AdminLoginPage() {
 
     return (
         <Wrapper>
+            <TabLoader direction="top" speed={1.4} minDuration={2000} />
             <main className="min-h-screen bg-[#e6d7c4] text-[#0e221c]">
                 <Header />
 

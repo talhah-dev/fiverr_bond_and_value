@@ -112,40 +112,42 @@ export default function Header() {
               className="ta-logo w-inline-block md:flex hidden items-center justify-center"
               onClick={closeMenu}
             >
-              {
-                !changeColor ? (
-                  <Image
-                    src="/ylogo.svg"
-                    alt="Logo TA Creatives &amp; Design"
-                    width={200}
-                    height={200}
-                    className={`w-auto h-10 md:block hidden `}
-                  />
-                ) : (
-                  <Image
-                    src="/door.svg"
-                    alt="Logo TA Creatives &amp; Design"
-                    width={200}
-                    height={200}
-                    className={`w-auto h-10 md:block hidden `}
-                  />
-                )
-              }
-              {/* <Image
-                src="/logoicon.webp"
+              <Image
+                src="/ylogo.svg"
                 alt="Logo TA Creatives &amp; Design"
                 width={200}
                 height={200}
-                className={`w-auto ${!changeColor ? "invert" : ""} `}
-              /> */}
+                className={`w-auto h-4 md:block hidden ${changeColor ? "invert" : ""} `}
+              />
+              {/* {
+                !changeColor ? (
+                ) : (
+                  <>
+                    <Image
+                      src="/logoicon.webp"
+                      alt="Logo TA Creatives &amp; Design"
+                      width={200}
+                      height={200}
+                      className={`w-auto ${!changeColor ? "invert" : ""} `}
+                    />
+                  </>
+                )
+              } */}
             </Link>
             <Image
+              src="/logoicon.webp"
+              alt="Logo TA Creatives &amp; Design"
+              width={200}
+              height={200}
+              className={`w-auto ${!changeColor ? "invert" : ""} `}
+            />
+            {/* <Image
               src="/ylogoicon.svg"
               alt="Logo TA Creatives &amp; Design"
               width={200}
               height={200}
               className={`w-auto h-12`}
-            />
+            /> */}
 
             {changeColor ? (
               <nav className="navbar-items hidden items-center gap-10 lg:flex">
@@ -437,7 +439,7 @@ export default function Header() {
                 <div className="flex flex-col items-center gap-[clamp(1rem,2.5vh,2rem)]">
                   <div className="menu-img w-full max-w-[min(380px,70vw)]">
                     <Image
-                      src="https://cdn.prod.website-files.com/6798cba3ff70cd53ac01b30a/67b0e0fb00250a4417094f4c_portretfoto.webp"
+                      src="/img16.png"
                       width={500}
                       height={500}
                       loading="lazy"
