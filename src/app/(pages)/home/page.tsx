@@ -177,12 +177,13 @@ export default function HomePage() {
         {/* <ScrollTabsSection tabs={tabs} className="mt-0" /> */}
 
         <ProjectsFeatureSection
-          leftImage="/img16.png"
+          leftImage="/img17.png"
           rightTopImage="/img3.png"
-          title={"Strategic PR & Marketing for Unmatched Brand Growth"}
-          body="We’re not the kind of firm that just accepts change as a constant. We embrace it. We shape the narrative and give you full control And now we’ve evolved our identity to show that loud and clear. It’s more than a new article or rebrand. It’s our statement of who we are and what we value. Our commitment to move forward, always, for and with our clients. We are Bond and Vale. Redefining Influence"
+          title={"Strategic PR & Marketing for Exceptional Brand Growth"}
+          body="We’re not a firm that simply accepts change as inevitable — we embrace it. We shape the narrative, putting you firmly in control. This evolution of our identity makes that clear. It’s more than a new look or rebrand; it’s a declaration of who we are and what we stand for. A commitment to move forward — always — alongside our clients.
+We are Bond and Vale. Redefining Influence."
           buttonHref="/services"
-          buttonLabel="PROJECTS"
+          buttonLabel="Services"
         />
 
 

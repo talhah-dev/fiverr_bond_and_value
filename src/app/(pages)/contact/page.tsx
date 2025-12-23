@@ -68,7 +68,7 @@ export default function Contact() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-14 gap-8">
                         <div>
                             <p className="text-sm text-[#0e221c]/90 mb-5">
-                                Send us an email, or call us.
+                                Send us an email
                             </p>
 
                             <Link href={"mailto:info@bondandvale.com"}>

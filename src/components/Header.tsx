@@ -139,7 +139,7 @@ export default function Header() {
               alt="Logo TA Creatives &amp; Design"
               width={200}
               height={200}
-              className={`w-auto ${!changeColor ? "invert" : ""} `}
+              className={`w-auto ${!changeColor ? "invert brightness-0" : ""} `}
             />
             {/* <Image
               src="/ylogoicon.svg"
@@ -439,7 +439,7 @@ export default function Header() {
                 <div className="flex flex-col items-center gap-[clamp(1rem,2.5vh,2rem)]">
                   <div className="menu-img w-full max-w-[min(380px,70vw)]">
                     <Image
-                      src="/img16.png"
+                      src="/img17.png"
                       width={500}
                       height={500}
                       loading="lazy"
@@ -459,7 +459,7 @@ export default function Header() {
                       <Instagram className="h-6 w-6" />
                     </Link>
 
-                    <a
+                    <Link
                       href="https://www.tiktok.com/@bondandvale"
                       target="_blank"
                       rel="noreferrer"
@@ -468,9 +468,9 @@ export default function Header() {
                         h-[clamp(2.5rem,5vh,3rem)] w-[clamp(2.5rem,5vh,3rem)]"
                     >
                       <span className="text-lg font-semibold">t</span>
-                    </a>
+                    </Link>
 
-                    <a
+                    <Link
                       href="https://www.facebook.com/share/1BS1H9f9mn/?mibextid=wwXIfr"
                       target="_blank"
                       rel="noreferrer"
@@ -478,9 +478,9 @@ export default function Header() {
                         h-[clamp(2.5rem,5vh,3rem)] w-[clamp(2.5rem,5vh,3rem)]"
                     >
                       <Facebook className="h-6 w-6" />
-                    </a>
+                    </Link>
 
-                    <a
+                    <Link
                       href="https://www.linkedin.com/company/bond-vale"
                       target="_blank"
                       rel="noreferrer"
@@ -488,7 +488,7 @@ export default function Header() {
                         h-[clamp(2.5rem,5vh,3rem)] w-[clamp(2.5rem,5vh,3rem)]"
                     >
                       <Linkedin className="h-6 w-6" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
 

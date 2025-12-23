@@ -18,7 +18,7 @@ type ProjectsFeatureProps = {
 export default function ProjectsFeatureSection({
     leftImage,
     rightTopImage,
-    eyebrow = "PROJECTS",
+    eyebrow = "SERVICES",
     title,
     body,
     buttonHref,
