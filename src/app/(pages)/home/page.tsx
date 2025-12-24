@@ -50,13 +50,15 @@ export default function HomePage() {
           />
           <video
             className="absolute md:hidden inset-0 h-full w-full object-cover"
-            src="/mobile.mp4"
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
-          />
+          >
+            <source src="/mobile.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <div className="absolute inset-0 bg-black/50" />
           <Header />
           <section className="relative h-[calc(100vh-6rem)] w-full flex items-center justify-center overflow-hidden">
