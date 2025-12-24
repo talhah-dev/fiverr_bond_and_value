@@ -72,7 +72,7 @@ export default function HomePage() {
                 <h1 className={`text-center font-[PPPangaia] uppercase leading-[0.95] transition-all duration-300 tracking-wide text-[#e6d7c4] drop-shadow-[0_2px_20px_rgba(0,0,0,0.35)] ${!isVisible ? 'opacity-0' : ''}`}>
                   <span className="block max-w-4xl leading-tight mx-auto text-center">
                     <SplitText
-                      text="Pay On Success Communication that connects."
+                      text="Pay On Success. Communication that connects."
                       className="text-[40px] sm:text-[70px] md:text-8xl text-center"
                       delay={300}
                       duration={2}
